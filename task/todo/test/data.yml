@@ -1,0 +1,18 @@
+# you describe your data using the YAML notation here
+# and then load them using Fixtures.load("data.yml")
+
+Todo(todo1):
+    description: Lala en kul beskrivelse
+    priority: 1
+Todo(todo2):
+    description: Lala en kulere beskrivelse
+    priority: 2
+Todo(todo3):
+    description: Viktig todo
+    priority: 3
+Todo(todo4):
+    description: Ikke så viktig
+    priority: 1
+Todo(todo5):
+    description: Medium viktig
+    priority: 2

@@ -1,0 +1,46 @@
+*{ You can use plain selenium command using the selenium tag }*
+
+#{selenium}
+    // Open page, and check that no error occured
+    open('/todo/add')
+    assertTitle('Add Todo')
+    assertNotTitle('Application error')
+#{/selenium}
+
+#{selenium}
+    // Check that content contains a form
+    open('/todo/add')    
+    verifyElementPresent('css=form')
+    verifyElementPresent('css=input#description')
+    verifyElementPresent('css=input#priority')    
+    verifyElementPresent('css=input[type=submit]')    
+#{/selenium}
+
+#{selenium}
+    // Verify that error's are showed. 
+    open('/todo/add')    
+    type('css=input#description', '')
+    type('css=input#priority', '')
+    clickAndWait('css=input[type=submit]')
+    
+    verifyTextPresent('Error')    
+#{/selenium}
+
+#{selenium}
+    // Verify that added showed in list. 
+    open('/todo/add')    
+    type('css=input#description', 'En fancy beskrivelse')
+    type('css=input#priority', '1')
+    clickAndWait('css=input[type=submit]')
+    
+    verifyTextPresent('En fancy beskrivelse')    
+#{/selenium}
+
+#{fixture delete:'all', load:'data.yml' /}
+#{selenium}   
+    open('/todo/index')        
+    verifyText('css=li:nth-child(1)', 'Viktig todo*')
+    verifyText('css=li:nth-child(2)', 'Lala en kulere beskrivelse*')
+    verifyText('css=li:nth-child(6)', 'Lala en kul beskrivels*')           
+#{/selenium}
+

@@ -1,0 +1,29 @@
+#{extends 'main.html' /}
+#{set title:'Add Todo' /}
+
+#{ifErrors}
+   <h1>Error…</h1>
+ 
+   #{errors}
+       <li>${error}</li>
+   #{/errors}
+#{/ifErrors}
+
+<br />
+<br />
+
+<form action="/todo/create" method="POST">
+	<label for="description">Beskrivelse</label>
+	<input id="description" name="description" value="${flash.description}" />
+	
+	<br />
+	
+	<label for="priority">Prioritet</label>
+	<input id="priority" name="priority" type="number"  value="${flash.priority}" />
+	
+	<br />
+	
+	<input type="submit" />
+</form> 
+
+
