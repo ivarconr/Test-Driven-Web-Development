@@ -69,23 +69,17 @@ Bla bla.. her kommer tommy med sine slides om selskapet...
 - Testene kjører fort
 - Testene kan kjøres i vilkårlig rekkefølge
 
-### Test-typer:
-- Enhetstester
-- Integrasjonstesting
-- Funksjonelle tester
-- Akseptansetester
-
-
 ---
 
-# Enhetstesting
+# Enhetstester.red.bold[*]
+.footnote[.red.bold[*] Tilhører kategorien white-box testing]
 
 Validerer at *isolerte enheter* av applikasjonen fungerer slik de skal.
 
-- Brukes til å teste små biter av koden
-- Hver test skal kjøres *isloert* fra de andre deler av koden
- - "*mockinger*" avhengigheter (f.eks in-mem-db)
-- Fokus på teste API'et vi tilbyr konsumentene av koden vår. 
+- Tester små biter av koden
+- Tester *betinget* funksjonalitet
+- *Isolerte* tester. 
+ - "*mocker*" avhengigheter (f.eks in-mem-db)
 - Dersom koden er vanskelig å teste isloert? Et tegn på dårlig design..
 
 
@@ -108,18 +102,68 @@ Validerer at *isolerte enheter* av applikasjonen fungerer slik de skal.
 
 ---
 
-# Funksjonell testing
+# Funksjonelle tester.red.bold[*]
+.footnote[.red.bold[*] Form for black-box testing]
 
-I en WEB-applikasjon benyttes funksjonelle tester til å teste at kontrollerene 
-våre håndterer *requests* korrekt. 
+Fokuserer på å teste en spesifikk funksjon i applikasjonen. 
 
-Vi må teste koden slik "konsumentene" av benytter den. 
+Kommentar: Innvolverer typisk flere komponenter. 
 
-### Hva tester vi?
-- Var *requesten* successful?
+
+### Hvorfor?
+- Verifiserer at grensesnitt følger kontrakten. 
+- Kan fortelle oss at "noe i koden" brakk
+- Teste koden på tilsvarende måte som den blir konsumert. 
+- I en WEB-applikasjon benyttes funksjonelle tester til å teste at kontrollerene 
+ håndterer *requests* korrekt.
+
+### Eksempler i WEB-app
+- Ble *requesten* successful?
 - Ble brukeren *redirected* til riktig side?
 - Er brukeren autentisert korrekt?
-- Lagres riktig objekt i responstemplaten?
+
+---
+
+# Integrasjonstester.red.bold[*]
+.footnote[.red.bold[*] Tilhører black-box-test kategorien]
+
+- Ende-til-ende-tester som verifiserer hele *applikasjonsstacken*.
+- Inkluderer alle moduler i applikasjonen, 
+- Inkluderer eksterne avhengigheterer/systemer. 
+- Verfisere at alle moduler *wires* opp korrekt
+
+---
+
+# Akseptansetester
+
+Tester av systemet fra *brukerens* perspektiv. 
+
+### Hvorfor? 
+- Benyttes til å akspetere en leveranse basert på akseptansekriteriene
+-  ..
+- ..
+
+### Eksempler i en WEB-applikasjon
+- Verifisere at en form finnes på side "/form".
+- Verifisere at det er mulig å submitte en blogpost. 
+- Verifisere at den havner på hovedsiden når den er submittet. 
+
+
+---
+
+# Illustrasjon
+                 ______
+                /      \
+               /        \
+              /Acceptance\
+             /---------- -\
+            / Integration  \
+           /------------- --\
+          / Functional tests \
+         /--------------------\
+            /                      \
+       /       Unit Tests       \
+      /__________________________\
 
 
 ---

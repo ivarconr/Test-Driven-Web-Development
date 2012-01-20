@@ -55,3 +55,12 @@ div.box.moody {
   background-color: #FFECD1;
   border-color: #F89406;
 }
+
+.footnote {
+  position: absolute;
+  bottom: 3em;
+}
+
+.red {
+  color: #fa0000;
+}
