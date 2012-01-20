@@ -84,7 +84,23 @@ Bla bla.. her kommer tommy med sine slides om selskapet...
 
 
 
-TODO: Vise kodeeksempel
+<div class="code">
+
+    import org.junit.*;
+    import static org.junit.Assert.*;
+
+    public class TestFoobar{
+      @Before
+      public void setUp() throws Exception {
+        // Kode som kjøres før hver test
+      }
+
+      @Test
+      public void shouldSumCorrectly() {
+        assertEquals(2, 1+2);
+      }
+    }
+</div>
 
 
 ---
