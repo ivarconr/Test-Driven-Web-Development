@@ -1,0 +1,22 @@
+Opppgaven 2.5T
+
+Todoliste
+
+TODO modell:
+ - id : long
+ - beskrivelse : string
+ - prioritet : int (1-3)
+ - frist : date
+ - opprettet : date
+ - status : boolean
+
+
+Kommandorer:
+
+Nytt prosjekt:
+play new todo
+
+# Sette opp for en IDE:
+play eclipsify
+play idealize
+

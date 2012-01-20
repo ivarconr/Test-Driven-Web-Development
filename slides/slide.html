@@ -47,11 +47,45 @@ Bla bla.. her kommer tommy med sine slides om selskapet...
  - Teste perisistering
  - Teste validering
  - Teste viewet  
-      
-### Kommentarer:
 
-- Bør vi si noe om JUnit?
-- Hvor mye skal vi fortelle om Play! og MVC osv?
+---
+
+# Flere nivåer av testing
+
+
+### Hvorfor tester vi?
+- Sikre at koden *løser problemet* vårt
+- Sikre at koden *ikke* gjør noe annet
+- Beskytte koden mot **bieffekter** ved fremtidige endringer
+ - Kan refaktorere på en tryggere måte
+- Fungerer som dokumentasjon
+- Gir økt kodekvalitet
+ - Finner bugs tidligere (billigere å rette idag enn om 2 uker)
+
+### God testpraksis
+- Automatiserte tester, som enkelt kan kjøres
+- Testene kjøres hver gang ny kode sjekkes inn. 
+
+### Testtyper vi skal se på i dag:
+- Enhetstester
+- Funksjonelle tester
+- Akseptansetester
+
+
+---
+
+# Enhetstesting
+
+- Brukes til å teste små biter av koden
+- Hver test skal kjøres *isloert* fra de andre deler av koden
+ - "*mockinger*" avhengigheter (f.eks in-mem-db)
+- Fokus på teste API'et vi tilbyr konsumentene av koden vår. 
+
+
+
+
+TODO: Vise kodeeksempel
+
 
 ---
 
