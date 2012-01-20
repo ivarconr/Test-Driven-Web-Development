@@ -1,0 +1,27 @@
+code {
+  -webkit-border-radius: 7px;
+  -moz-border-radius: 7px;
+  border-radius: 7px;
+  padding: 9px;
+}
+
+.goal, .help, .code {
+  border: 1px solid #ccc;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  width: 100%;
+  padding: 8px;
+}
+
+.goal:before {
+  content: "Mål: ";
+}
+
+.help:before {
+  content: "Hjelp: ";
+}
+
+.code:before {
+  content: "Kodeeksempel: ";
+}
