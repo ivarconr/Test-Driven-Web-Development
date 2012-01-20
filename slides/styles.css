@@ -5,27 +5,6 @@ code {
   padding: 9px;
 }
 
-.goal, .help, .code {
-  border: 1px solid #ccc;
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  border-radius: 4px;
-  padding: 8px;
-  display: block;
-}
-
-.goal:before {
-  content: "Mål: ";
-}
-
-.help:before {
-  content: "Hjelp: ";
-}
-
-.code:before {
-  content: "Kodeeksempel: ";
-}
-
 .label {
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
