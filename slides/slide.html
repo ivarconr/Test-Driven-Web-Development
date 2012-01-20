@@ -61,13 +61,17 @@ Bla bla.. her kommer tommy med sine slides om selskapet...
 - Fungerer som dokumentasjon
 - Gir økt kodekvalitet
  - Finner bugs tidligere (billigere å rette idag enn om 2 uker)
+ - Mindre debugging
 
 ### God testpraksis
 - Automatiserte tester, som enkelt kan kjøres
 - Testene kjøres hver gang ny kode sjekkes inn. 
+- Testene kjører fort
+- Testene kan kjøres i vilkårlig rekkefølge
 
-### Testtyper vi skal se på i dag:
+### Test-typer:
 - Enhetstester
+- Integrasjonstesting
 - Funksjonelle tester
 - Akseptansetester
 
@@ -76,18 +80,19 @@ Bla bla.. her kommer tommy med sine slides om selskapet...
 
 # Enhetstesting
 
+Validerer at *isolerte enheter* av applikasjonen fungerer slik de skal.
+
 - Brukes til å teste små biter av koden
 - Hver test skal kjøres *isloert* fra de andre deler av koden
  - "*mockinger*" avhengigheter (f.eks in-mem-db)
 - Fokus på teste API'et vi tilbyr konsumentene av koden vår. 
+- Dersom koden er vanskelig å teste isloert? Et tegn på dårlig design..
 
 
 <div class="code">
 
-    import org.junit.*;
-    import static org.junit.Assert.*;
-
     public class TestFoobar{
+
       @Before
       public void setUp() throws Exception {
         // Kode som kjøres før hver test
@@ -99,6 +104,22 @@ Bla bla.. her kommer tommy med sine slides om selskapet...
       }
     }
 </div>
+
+
+---
+
+# Funksjonell testing
+
+I en WEB-applikasjon benyttes funksjonelle tester til å teste at kontrollerene 
+våre håndterer *requests* korrekt. 
+
+Vi må teste koden slik "konsumentene" av benytter den. 
+
+### Hva tester vi?
+- Var *requesten* successful?
+- Ble brukeren *redirected* til riktig side?
+- Er brukeren autentisert korrekt?
+- Lagres riktig objekt i responstemplaten?
 
 
 ---
@@ -175,6 +196,9 @@ hello-world-todo, work in progress
 
 # TDD - hva er det?
 Basics om konseptet. Hva er det. 
+
+Graf over hva det koster:
+i design, under implementasjon, i QA, etter release. 
 
 ---
 
