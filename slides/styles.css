@@ -10,8 +10,8 @@ code {
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px;
-  width: 100%;
   padding: 8px;
+  display: block;
 }
 
 .goal:before {
