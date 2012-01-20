@@ -5,27 +5,6 @@ code {
   padding: 9px;
 }
 
-.goal, .help, .code {
-  border: 1px solid #ccc;
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  border-radius: 4px;
-  padding: 8px;
-  display: block;
-}
-
-.goal:before {
-  content: "Mål: ";
-}
-
-.help:before {
-  content: "Hjelp: ";
-}
-
-.code:before {
-  content: "Kodeeksempel: ";
-}
-
 .label {
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
@@ -53,12 +32,13 @@ code {
   background-color: #C43C35;
 }
 
-div.box {
+div.box, code {
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px;
   padding: 5px;
-  border: 1px solid;
+  border: 1px solid #ccc;
+  margin-bottom: 30px;
 }
 
 div.box.angry {
@@ -72,6 +52,6 @@ div.box.happy {
 }
 
 div.box.moody {
-  background-color: #ffdcab;
+  background-color: #FFECD1;
   border-color: #F89406;
 }
