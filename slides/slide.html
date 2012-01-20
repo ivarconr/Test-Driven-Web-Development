@@ -201,15 +201,44 @@ Når jeg åpner "/todo/add" skal tittel på siden være "Legg til en todo"
 <div class="moody box">
 .label[Tips]
 
-- Selenium egner seg til testing av HTML-respons, så start med test/Application.test.html
+- Selenium egner seg til testing av HTML-respons, opprett derfor test/Todo.test.html
 - Ta en titt på Selenese sin assertTitle()
 - Kjør testen via http://localhost:9000/@tests
-- Fiks feilende test
+- Fiks feilende test (opprett view i app/views/todo/add.html)
 
 </div>
 
     open('xyz')
     assertTitle('wzy')
+
+---
+
+# Iterasjon 3
+
+<div class="moody box">
+.label[Hva skal implementeres?]
+
+- Når jeg åpner "/todo/add" skal jeg bli presentert med en form som har input-elementer for "beskrivelse" og "prioritet"
+- Formen skal poste til "/todo/create" og ha en submit-knapp
+</div>
+
+<div class="moody box">
+.label[Tips]
+
+- Selenium egner seg til testing av HTML-respons, så fortsett på test/Todo.test.html
+- assertElementPresent('css=cssSelector') kan brukes til å kreve at HTML-elementer er tilstede
+- Kjør testen via http://localhost:9000/@tests
+- Fiks feilende test (oppdater view)
+
+</div>
+
+    .html
+    <form action="/my/action" method="POST" id="myForm" class="aForm"></form>
+
+Et form-element som over kan hentes med følende css-selectors:
+
+    .html
+    "form",  "form.aForm",  "#myForm",  "form#myForm",  "form[method=POST]"
 
     </textarea>
     <div id="slideshow"></div>
