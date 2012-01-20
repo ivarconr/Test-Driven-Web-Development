@@ -180,7 +180,6 @@ Tester av systemet fra *brukerens* perspektiv.
 
 <div class="happy box">
 .label[Fordeler]
-
 - Inkluderer hele webstacken
 - Følger _ikke_ servlet-spec
 - Automatisk rekompilering
@@ -307,6 +306,111 @@ Et form-element som over kan hentes med følende css-selectors:
 
     .html
     "form",  "form.aForm",  "#myForm",  "form#myForm",  "form[method=POST]"
+
+---
+
+# Iterasjon 4
+
+<div class="moody box">
+.label[Hva skal implementeres?]
+
+- Klassen models.Todo skal kunne opprettes med en tekstlig beskrivelse (description) og en prioritet (priority). Dette skal lagres som instansvariabler.
+</div>
+
+<div class="moody box">
+.label[Tips]
+
+- todo: forklar public-variabler i Play
+- todo: forklar Todo-modellen
+- Lag en unit-test som lager en Todo og verifiserer at properties blir satt
+- Se at testen feiler
+- Opprett klassen models.Todo og implementer nødvendig funksjonalitet i klassens konstruktør
+
+</div>
+
+---
+
+# Iterasjon 5
+
+<div class="moody box">
+.label[Hva skal implementeres?]
+
+Instanser av modellen - inkludert alle datafelter - skal kunne lagres til database.
+
+</div>
+
+<div class="moody box">
+.label[Tips]
+
+- Opprett unit-test test/models/TodoTest.java som lager en Todo, kaller save() på instansen og ser om den har blitt lagret i databasen.
+- Fiks feilende test ved å extende modellen med "Model", og annoter klassen med @Entity
+- Husk at tester skal kjøres i isolasjon, bruk JUnits @Before og Fixtures.deleteDatabase()
+
+</div>
+
+    @Test // JUnit
+    public void shouldPersistTodo() {
+      // opprett en todo og la Hibernate lagre den med save()
+      // hent alle todos med Todo.findAll()
+      // bruk assertEquals() til å verifisere at antall todos er som forventet
+    }
+
+    // Modell:
+    @Entity // Hibernate-annotering
+    public class Todo extends Model { // Model er en hjelpeklasse fra Play
+      // ...
+    }
+
+---
+
+# Iterasjon 6
+
+todo: functional
+
+---
+
+# Iterasjon 7
+
+todo: functional
+
+---
+
+# Iterasjon 8
+
+todo: functional
+
+---
+
+# Iterasjon 9
+
+todo: functional
+
+---
+
+# Iterasjon 10
+
+todo: functional
+
+---
+
+# Iterasjon 11
+
+<div class="moody box">
+.label[Hva skal implementeres?]
+
+Verifisere at errors er vist i view
+
+</div>
+
+<div class="moody box">
+.label[Tips]
+
+- todo: work in progress
+
+</div>
+
+---
+
 
     </textarea>
     <div id="slideshow"></div>
