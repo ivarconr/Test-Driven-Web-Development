@@ -3,11 +3,11 @@ Tidsskjema
 16:15 --> 16:30 - Presentasjon av itera
 16:30 --> 16:35 - Intro til kurset og agenda
 16:35 --> 16:45 - Ulike testtyper (10min) --> Ivar
-16:45 --> 17:00 - intro/installasjon/eksempler/helloworld/osv av play (15min)
+16:45 --> 17:00 - intro/installasjon/eksempler/helloworld/osv av play (15min) (KRK)
 17:00 --> 17:30 - Mat
 17:30 --> 17:45 - TDD, intro, CI, fordel og ulemper + enkelt eksempel --> Ivar
 17:45 --> 17:55 - TDWD og presentasjon av oppgaven --> Kris-Mikael
-18:00 --> 20:00 - Oppgaven
+18:00 --> 20:00 - Oppgaven (begge)
 
 120min totalt
 
