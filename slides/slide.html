@@ -136,7 +136,6 @@ Vi må teste koden slik "konsumentene" av benytter den.
 
 <div class="happy box">
 .label[Fordeler]
-
 - Inkluderer hele webstacken
 - Følger _ikke_ servlet-spec
 - Automatisk rekompilering
@@ -301,6 +300,7 @@ Instanser av modellen - inkludert alle datafelter - skal kunne lagres til databa
 
 - Opprett unit-test test/models/TodoTest.java som lager en Todo, kaller save() på instansen og ser om den har blitt lagret i databasen.
 - Fiks feilende test ved å extende modellen med "Model", og annoter klassen med @Entity
+- Husk at tester skal kjøres i isolasjon, bruk JUnits @Before og Fixtures.deleteDatabase()
 
 </div>
 
@@ -316,6 +316,8 @@ Instanser av modellen - inkludert alle datafelter - skal kunne lagres til databa
     public class Todo extends Model { // Model er en hjelpeklasse fra Play
       // ...
     }
+
+---
 
 
     </textarea>
