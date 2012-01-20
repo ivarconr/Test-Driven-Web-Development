@@ -1,0 +1,140 @@
+Hello world:
+
+* Unit
+	- Info til Play!Unit, extends UnitTest
+  - Vise den eksisterende Unit-testen, men ikke utvid noe mer
+
+* Functional
+	- Info til Play!functional, extends FunctionalTest
+	- Gå gjennom eksisterende functional
+
+* Selenium
+	- Info til selenium, selenese
+	- Skriver test: Åpner "/" og verifisere tekst "hello world"
+	- Gå gjennom play test, @tests se at testen feiler
+	- Fiks feilende test (endre i view)
+
+* Info om:
+	- Remote debug
+  - Play! template tags
+  - Play!testing (at man får en /@tests når man kjører play test)
+
+
+Todo:
+
+* Gå gjennom:
+  * # play new todo
+  * # play test
+  * Åpne http://localhost:9000
+
+* Functional "get /todo/add"
+  1 Forklare hvorfor functional først
+	1 Vis hvordan man kan teste GET i Play!
+  1 Info om hva vi ønsker å implementere
+	1 Verifiser http-status med en test
+	1 Fiks ved å lage en controller og en tom "add"-metode 
+
+* Selenium "get /todo/add"
+  1 Forklare hvorfor selenium er første
+  1 Info om hva vi ønsker å implementere
+	1 Verifiser "Not applicationerror" og tittel med en test
+	1 Se at testen feiler
+	1 Fiks test ved å oppdatere controller med render, og lag view
+
+	2 Presentere form-struktur, action= "todo/create"
+	2 Verifiser inputelementer i form
+	2 Legg til inputelementer, beskrivelse, prioritet for å fikse test
+	
+
+* Unit 
+  1 Info om hva vi ønsker å implementere
+  1 Info om public-variabler i Play!
+  1 Forklare Todo-modellen vi ønsker
+	1 Lag en test som kan opprette en Todo
+	1 Verifiser med en test at variablene blir satt (beskrivelse og prioritet)
+  1 Se at test feiler
+  1 Lag klassen Todo som tar i mot to argumenter i konstruktør og setter dem til instansvariabler
+	
+  2 På tide å forklare at vi lagrer i en in-memory-database og hvordan Play! kan hente derfra
+  2 Info om hva vi ønsker å implementere. Sjekk om vi må inn i appconf og endre til db=mem
+	2 Lag en test som lagrer todo og sjekk at databasen har ett innslag og at pri+beskrivelse er lagret riktig
+  2 Se at test feiler
+  2 Fiks ved å extende model og entity
+
+  3 Ikke noe særlig info til fixtures, men nevne at vi kommer tilbake til forklaring senere
+	3 Lag en test som ligner på 3) men lagrer to todos. Se at begge blir lagret.
+	3 Fiks test ved å legge til setupmetode, fixtures.deletedatabase
+
+* Functional "post /todo/create"
+  1 Info om hva vi ønsker å implementere
+	1 Info om autobinding av Play og manuelt hente properties, forklar kort hvorfor vi velger manuelt. Vis APIet til POST (for å kunne bruke params med hashmap)
+  1 Husk fixtures.deletedatabase!
+	1 Skriv en test som POST'er med params og at det blir lagret en Todo
+	1 Se at testen feiler
+	1 Fiks utvide "create" med å ta i mot to argumenter og save
+	
+  2 Info om hva vi ønsker å implementere. At POST til create sender til index
+  2 Lag en test som verifiserer headerEquals(location)
+  2 Se at test feiler
+  2 Fiks ved å opprette og kalle index()
+
+	3 Info om validering
+	3 Lag en test som verifiserer at beskrivelse må være med (ved å assert headerEquals("Location"))
+	3 Se at testen feiler
+	3 Fiks controller med todo.validateAndSave og kall add() hvis den ikke validerer
+	3 Fiks modell med validering, @required på description
+
+  3 Info om hva vi ønsker å implementere
+	3 Lag en test som verifiserer at prioritet skal være med, tilsvarende testen over
+	3 Se at testen feiler
+	3 Fiks modell med @required og @min(1)
+
+  4 Info om hva vi ønsker å implementere
+	4 Lag en test som verifiserer at prioritet er maks 3
+	4 Se at testen feiler
+	4 Fiks med @max(3)
+
+	5 Vurder en refaktorerings-iterasjon ved å gjøre om binding til autobinding, kun hvis vi har tid!
+
+
+* Selenium
+  1 Info om hva vi ønsker å implementere
+	1 Info om ifError, #{errors} og validation.keep() 
+	1 Skriv en test at en invalid POST gir text present "Error"
+	1 Fiks ved å implementere validation.keep() og oppdatere viewet. Bruk #{ifErrors}
+
+
+Liste todos
+
+* Selenium "index /todo"
+	1 Info om render() med argumenter, husk å spare på variabelen
+  1 Vurder å gi todo-index-view
+	1 Skriv en test at todos blir vist i lista, verifytextpresent
+	1 Fiks ved å oppdatere index.html med en liste, og render med alle todos
+	
+* Unit, test sortering
+  * Info om hva vi ønsker å implementere
+	* La de finne ut av hvordan de skal gjøre dette selv, men nevn statisk metode på Todo, gi hint til findAll()
+	* Skriv test som oppretter noen Todos og krever at de er sortert etter prioritet
+	* Se at det feiler
+	* Implementer i modell
+
+* Unit, test sortering etter alfabetisk etter sortering
+	1 Skriv test som oppretter Todos og krever at de er sortert etter pri, så etter beskrivelse
+	1 Se at det feiler
+	1 Implementer i eksisterende modell
+
+* Selenium, test at viewet bruker den sorterte lista
+	1 Info om fixtures
+	1 Skriv fixtures
+	1 Skriv en test som tester at elementene i lista er riktig sortert med nth-child
+	1 Se at det feiler
+	1 Oppdater controller med å bruke sorteringsmetoden
+
+* Funksjonell, test som ser at /todo gir Index
+	1 Info om routes
+	1 Skriv en test som henter /todo
+	1 Se at den feiler
+	1 Oppdater routes
+	1 Se at en gammel test feiler
+	1 Oppdater den gamle testen
