@@ -25,3 +25,53 @@ code {
 .code:before {
   content: "Kodeeksempel: ";
 }
+
+.label {
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  padding: 1px 3px 2px;
+  color: white;
+  font-weight: bold;
+  text-transform: uppercase;
+  white-space: nowrap;
+  font-size: 0.6em;
+  position: relative;
+  top: -20px;
+  left: 10px;
+}
+
+.box.moody .label {
+  background-color: #F89406;
+}
+
+.box.happy .label {
+  background-color: #46A546;
+}
+
+.box.angry .label {
+  background-color: #C43C35;
+}
+
+div.box {
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  padding: 5px;
+  border: 1px solid;
+}
+
+div.box.angry {
+  background-color: #FFD7D5;
+  border-color: #C43C35;
+}
+
+div.box.happy {
+  background-color: #C0E0C0;
+  border-color: #46a546;
+}
+
+div.box.moody {
+  background-color: #ffdcab;
+  border-color: #F89406;
+}
