@@ -27,13 +27,13 @@ public class TodoTest extends UnitTest {
 	
 	@Test
 	public void testThatWeCanStoreTodo() {
-		Todo todo = new Todo("beskrivelse", 1);
+		Todo todo = new Todo(null, 0);
 		
 		todo.save();
 		
-		List<Todo> todos = Todo.findAll();		
+		List<Todo> todos = Todo.findAll();
 		Todo firstTodo = todos.get(0);
-			
+		
 		assertEquals(1, todos.size());
 		assertEquals("beskrivelse", firstTodo.description);
 		assertEquals(1, firstTodo.priority);

@@ -48,8 +48,9 @@ public class TodoTest extends FunctionalTest {
 			params.put("priority", "1"); 
 
 	        Response response = POST("/todo/create", params);
-	        	        
-	        assertHeaderEquals("Location", "/todo/index", response);	 
+	        
+	        //Først: assertHeaderEquals("Location", "/todo/index", response);	
+	        assertHeaderEquals("Location", "/todo", response);	 
 			assertEquals(1, Todo.findAll().size());	        	        
 	    }
 		
@@ -80,6 +81,12 @@ public class TodoTest extends FunctionalTest {
 
 	        Response response = POST("/todo/create", params);	        	       
 	        assertHeaderEquals("Location", "/todo/add", response);        	        
+	    }
+		
+		@Test
+	    public void shoulUseIndexAsRoot() {
+	        Response response = GET("/todo");	        	       
+	        assertIsOk(response);      	        
 	    }
 
 }
