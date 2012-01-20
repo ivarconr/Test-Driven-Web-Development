@@ -120,3 +120,5 @@ Liste todos
 	1 Skriv en test som henter /todo
 	1 Se at den feiler
 	1 Oppdater routes
+	1 Se at en gammel test feiler
+	1 Oppdater den gamle testen
