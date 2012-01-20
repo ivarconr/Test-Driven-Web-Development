@@ -82,8 +82,6 @@ Bla bla.. her kommer tommy med sine slides om selskapet...
 - Fokus på teste API'et vi tilbyr konsumentene av koden vår. 
 
 
-
-
 <div class="code">
 
     import org.junit.*;
@@ -135,6 +133,12 @@ Bla bla.. her kommer tommy med sine slides om selskapet...
 
 ---
 
+# Demo
+
+hello-world-todo, work in progress
+
+---
+
 # Oppsett av play
 
 <div class="moody box">
@@ -180,27 +184,32 @@ Basics om konseptet. Hva er det.
 
 ---
 
-# Oppgave
+# Introduksjon til oppgave
+
+todo, work in progress
+
+---
+
+# Iterasjon 2
 
 <div class="moody box">
 .label[Hva skal implementeres?]
 
-- ditt
-- datt
+Når jeg åpner "/todo/add" skal tittel på siden være "Legg til en todo"
 </div>
 
 <div class="moody box">
-.label[Hjelp?]
+.label[Tips]
 
-- introduksjon til nyttige API 
-- Forslag til hvilken test-type som skal brukes, unit, funksjonell eller selenium?
+- Selenium egner seg til testing av HTML-respons, så start med test/Application.test.html
+- Ta en titt på Selenese sin assertTitle()
+- Kjør testen via http://localhost:9000/@tests
+- Fiks feilende test
 
 </div>
 
-    public static void main(String[] args) {
-
-    }
-
+    open('xyz')
+    assertTitle('wzy')
 
     </textarea>
     <div id="slideshow"></div>
