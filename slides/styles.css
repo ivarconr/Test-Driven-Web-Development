@@ -70,3 +70,7 @@ div.box.moody {
 .red {
   color: #fa0000;
 }
+
+.small {
+  font-size: 0.5em;
+}
