@@ -80,3 +80,7 @@ div.box.moody {
   font-weight: bold;
   font-size: 0.85em;
 }
+
+.notes {
+  display: none;
+} 

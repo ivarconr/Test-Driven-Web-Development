@@ -68,7 +68,7 @@ Et vakkert testbilde her...
  - Kan refaktorere på en tryggere måte
 - Fungerer som dokumentasjon
 - Gir økt kodekvalitet
- - Finner bugs tidligere (billigere å rette idag enn om 2 uker)
+ - Finner bugs tidligere (billigere å rette i dag enn om 2 uker)
  - Mindre debugging
 - White-box vs. black-box
 
@@ -158,18 +158,13 @@ Sikre at systemet tilfredstiller de funksjonelle kravene som er satt til løsnin
 
 ---
 
+
 # Play framework
-
-.center
-<img style="zoom: 0.8" src="images/play_architecture.png" />
-
----
-
-# Play, fordeler og ulemper
 
 <div class="happy box">
 .label[Fordeler]
 
+- Lært fra andres feil
 - Inkluderer hele webstacken
 - Følger _ikke_ servlet-spec
 - Automatisk rekompilering
@@ -187,10 +182,33 @@ Sikre at systemet tilfredstiller de funksjonelle kravene som er satt til løsnin
 
 ---
 
+# Plays arkitektur
+
+.center
+<img style="zoom: 0.87" src="images/play_architecture.png" />
+
+---
+
 # Demo
 
-hello-world-todo, work in progress
+<div class="happy box">
+.label[Hva skal til for å starte en webapp i Play?]
 
+1. Installer Java
+1. Last ned og unzip .tt[play.zip]
+1. Fra kommandolinje: .tt[play new minApplikasjon]
+1. .tt[play run minApplikasjon]
+</div>
+
+<div class="notes">
+
+  * echo $java_home
+  * which play
+  * play new hello_world
+  * tree
+  * forklar tingene, spesielt MVC og test
+
+</div>
 ---
 
 # Oppsett av play
@@ -262,7 +280,15 @@ hello-world-todo, work in progress
 
 # Test-drevet webutvikling
 
-## Intro TDWD
+<div class="moody box">
+
+.label[Utfordringer (uten hjelp fra webrammeverk)]
+
+* Lite kontroll på klientsiden
+* Mange avhengigheter nødvendig for å få startet en webapplikasjon &raquo; fører til svært mange mulige sammensetninger
+* Integrasjon med database, nettverk, webtjenester
+
+</div>
 
 ---
 
@@ -430,7 +456,7 @@ todo: functional
 <div class="moody box">
 .label[Tips]
 
-.tt[http://www.playframework.org/documentation/1.2.4/tags#errors]
+* .tt[http://www.playframework.org/documentation/1.2.4/tags#errors]
 
 </div>
 
