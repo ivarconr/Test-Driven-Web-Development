@@ -47,17 +47,25 @@ div.box, code {
   font-size: 0.9em;
 }
 
-div.box.angry {
+.angry {
   background-color: #FFD7D5;
   border-color: #C43C35;
 }
 
-div.box.happy {
+.happy {
   background-color: #C0E0C0;
   border-color: #46a546;
 }
 
-div.box.moody {
+.moody {
   background-color: #FFECD1;
   border-color: #F89406;
+}
+
+.clock {
+  position: absolute;
+  left: 5px;
+  bottom: 5px;
+  width: 100px;
+  font-size: 0.7em;
 }

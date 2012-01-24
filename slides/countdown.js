@@ -1,43 +1,72 @@
-var slides;
-var startTime;
-var limits = [];
+(function() {
+  var Clock, obj;
+  var __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
 
-$(function() {
-  $('div.slide .content').each(function(i, slide) {
-    limits.push(5);
-  });
-});
+  Clock = (function() {
 
-var startClocks = function() {
-  startTime = new Date();
-  slides = $('div.slide .content');
+    function Clock() {
+      this.appendClockToCurrentSlide = __bind(this.appendClockToCurrentSlide, this);
+      this.updateClock = __bind(this.updateClock, this);      this.limits = [3, 15, 10, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24];
+      this.startTime = new Date();
+    }
 
-  var updateClocks = function() {
-    var millisecondsUsed = new Date().getTime() - startTime.getTime();
-    var minutesUsed = Math.floor(millisecondsUsed / 1000 / 60);
-    
-    var availableTime;
-    $.each(slides, function(i, slide) {
-      slide = $(slide)
-      var clock = slide.find('div.clock');
-      var slideLimit = limits[i];
-      availableTime += slideLimit;
-      clock.html('Brukt: ' + minutesUsed);
-      clock.append('Du er ' + (availableTime - minutesUsed) + " foran skjema");
-    });
-  };
+    Clock.prototype.updateClock = function() {
+      var availableTime, millisecondsUsed, minutesUsed;
+      var _this = this;
+      millisecondsUsed = new Date().getTime() - this.startTime.getTime();
+      minutesUsed = Math.floor(millisecondsUsed / 1000);
+      availableTime = 0;
+      return $.each(this.slides, function(i, slide) {
+        var clock, slideLimit;
+        if (_this.isCurrentSlide(slide)) {
+          slide = $(slide);
+          clock = slide.find('div.clock');
+          if (!(clock.length > 0)) clock = _this.appendClockToCurrentSlide();
+          clock.html("" + minutesUsed + "/" + availableTime);
+          _this.updateCss(clock, minutesUsed, availableTime);
+        }
+        slideLimit = _this.limits[i];
+        return availableTime += slideLimit;
+      });
+    };
 
-  var appendClocks = function() {
-    $.each(slides, function(i, slide) {
-      var clock = $('<div>').addClass('clock').css('border', '1px solid black').css('width', '100px').css('height', '100px');
-      $(slide).append(clock);
-    });
-  };
+    Clock.prototype.updateCss = function(clock, used, avail) {
+      clock.removeClass('moody happy angry');
+      if (avail > used + 5) {
+        return clock.addClass('happy');
+      } else if (avail > used) {
+        return clock.addClass('moody');
+      } else {
+        return clock.addClass('angry');
+      }
+    };
 
-  appendClocks();
+    Clock.prototype.appendClockToCurrentSlide = function() {
+      var clock;
+      var _this = this;
+      this.slides = $('div.slide .content');
+      clock = [];
+      $.each(this.slides, function(i, slide) {
+        if (_this.isCurrentSlide(slide)) {
+          clock = $('<div>').addClass('clock');
+          return $(slide).append(clock);
+        }
+      });
+      return clock;
+    };
 
-  setInterval(updateClocks, 1000);
+    Clock.prototype.isCurrentSlide = function(slide) {
+      return $(slide).parent().css('display') === 'table';
+    };
 
-}
+    return Clock;
 
-//setTimeout(startClocks, 1000);
+  })();
+
+  obj = new Clock();
+
+  setTimeout(obj.appendClockToCurrentSlide, 1000);
+
+  setInterval(obj.updateClock, 1000);
+
+}).call(this);
