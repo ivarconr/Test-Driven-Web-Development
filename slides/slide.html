@@ -160,9 +160,8 @@ Sikre at systemet tilfredstiller de funksjonelle kravene som er satt til løsnin
 
 # Play framework
 
-- Bakgrunn
-- Arkitektur
- - todo: Inkluder et bilde
+.center
+<img style="zoom: 0.8" src="images/play_architecture.png" />
 
 ---
 
@@ -170,6 +169,7 @@ Sikre at systemet tilfredstiller de funksjonelle kravene som er satt til løsnin
 
 <div class="happy box">
 .label[Fordeler]
+
 - Inkluderer hele webstacken
 - Følger _ikke_ servlet-spec
 - Automatisk rekompilering
@@ -272,26 +272,36 @@ todo, work in progress
 
 ---
 
+# Iterasjon 1
+
+todo
+
+---
+
 # Iterasjon 2
 
 <div class="moody box">
 .label[Hva skal implementeres?]
 
-Når jeg åpner "/todo/add" skal tittel på siden være "Legg til en todo"
+* Når jeg åpner .tt[/todo/add] skal tittel på siden være "Legg til en todo"
 </div>
 
 <div class="moody box">
 .label[Tips]
 
-- Selenium egner seg til testing av HTML-respons, opprett derfor test/Todo.test.html
-- Ta en titt på Selenese sin assertTitle()
-- Kjør testen via http://localhost:9000/@tests
-- Fiks feilende test (opprett view i app/views/todo/add.html)
+- Selenium egner seg til testing av HTML-respons, opprett derfor .tt[test/Todo.test.html]
+- Ta en titt på Selenese sin .tt[assertTitle()]
+- Kjør testen via .tt[http://localhost:9000/@tests]
+- Fiks feilende test (opprett view i .tt[app/views/todo/add.html])
 
 </div>
 
-    open('xyz')
-    assertTitle('wzy')
+    // fil: test/Application.test.html
+    #{selenium}
+        // Open the home page, and check that no error occured
+        open('/')
+        assertNotTitle('Application error')
+    #{/selenium}
 
 ---
 
@@ -300,16 +310,16 @@ Når jeg åpner "/todo/add" skal tittel på siden være "Legg til en todo"
 <div class="moody box">
 .label[Hva skal implementeres?]
 
-- Når jeg åpner "/todo/add" skal jeg bli presentert med en form som har input-elementer for "beskrivelse" og "prioritet"
-- Formen skal poste til "/todo/create" og ha en submit-knapp
+- Når jeg åpner .tt[/todo/add] skal jeg bli presentert med en form som har input-elementer for .tt["beskrivelse"] og .tt["prioritet"]
+- Formen skal poste til .tt[/todo/create] og ha en submit-knapp
 </div>
 
 <div class="moody box">
 .label[Tips]
 
-- Selenium egner seg til testing av HTML-respons, så fortsett på test/Todo.test.html
-- assertElementPresent('css=cssSelector') kan brukes til å kreve at HTML-elementer er tilstede
-- Kjør testen via http://localhost:9000/@tests
+- Selenium egner seg til testing av HTML-respons, så fortsett på .tt[test/Todo.test.html]
+- .tt[assertElementPresent('css=cssSelector')] kan brukes til å kreve at HTML-elementer er tilstede
+- Kjør testen via .tt[http://localhost:9000/@tests]
 - Fiks feilende test (oppdater view)
 
 </div>
@@ -329,17 +339,17 @@ Et form-element som over kan hentes med følende css-selectors:
 <div class="moody box">
 .label[Hva skal implementeres?]
 
-- Klassen models.Todo skal kunne opprettes med en tekstlig beskrivelse (description) og en prioritet (priority). Dette skal lagres som instansvariabler.
+- Klassen .tt[models.Todo] skal kunne opprettes med feltene .tt["beskrivelse"] (description) og .tt["prioritet"] (priority). Dette skal lagres i instansen som instansvariabler.
 </div>
 
 <div class="moody box">
 .label[Tips]
 
-- todo: forklar public-variabler i Play
-- todo: forklar Todo-modellen
-- Lag en unit-test som lager en Todo og verifiserer at properties blir satt
-- Se at testen feiler
-- Opprett klassen models.Todo og implementer nødvendig funksjonalitet i klassens konstruktør
+1. todo: forklar public-variabler i Play
+1. todo: forklar Todo-modellen
+1. Lag en unit-test som lager en .tt["Todo"] og verifiserer at properties blir satt
+1. Se at testen feiler
+1. Opprett klassen .tt[models.Todo] og implementer nødvendig funksjonalitet i klassens konstruktør
 
 </div>
 
@@ -357,15 +367,15 @@ Instanser av modellen - inkludert alle datafelter - skal kunne lagres til databa
 <div class="moody box">
 .label[Tips]
 
-- Opprett unit-test test/models/TodoTest.java som lager en Todo, kaller save() på instansen og ser om den har blitt lagret i databasen.
-- Fiks feilende test ved å extende modellen med "Model", og annoter klassen med @Entity
-- Husk at tester skal kjøres i isolasjon, bruk JUnits @Before og Fixtures.deleteDatabase()
+- Opprett unit-test .tt[test/models/TodoTest.java] som lager en .tt[Todo], kaller .tt[save()] på instansen og ser om den har blitt lagret i databasen.
+- Fiks feilende test ved å extende modellen med "Model", og annoter klassen med .tt[@Entity]
+- Husk at tester skal kjøres i isolasjon, bruk JUnits .tt[@Before] og .tt[Fixtures.deleteDatabase()]
 
 </div>
 
     @Test // JUnit
     public void shouldPersistTodo() {
-      // opprett en todo og la Hibernate lagre den med save()
+      // opprett en todo og deleger lagring til Hibernate ved å kalle save()
       // hent alle todos med Todo.findAll()
       // bruk assertEquals() til å verifisere at antall todos er som forventet
     }
@@ -413,19 +423,16 @@ todo: functional
 <div class="moody box">
 .label[Hva skal implementeres?]
 
-Verifisere at errors er vist i view
+* Når det er feilmeldinger skal disse vises i viewet i en liste
 
 </div>
 
 <div class="moody box">
 .label[Tips]
 
-- todo: work in progress
+.tt[http://www.playframework.org/documentation/1.2.4/tags#errors]
 
 </div>
-
----
-
 
     </textarea>
     <div id="slideshow"></div>
