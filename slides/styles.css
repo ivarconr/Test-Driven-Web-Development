@@ -99,7 +99,13 @@ li li {
   font-size: 0.5em;
 }
 
+.big {
+  font-size: 1.2em;
+}
+
 .footnote {
   position: absolute;
   bottom: 3em;
 }
+
+
