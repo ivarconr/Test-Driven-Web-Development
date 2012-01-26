@@ -6,7 +6,7 @@
 
     function Clock() {
       this.appendClockToCurrentSlide = __bind(this.appendClockToCurrentSlide, this);
-      this.updateClock = __bind(this.updateClock, this);      this.limits = [3, 15, 10, 3, 3, 3, 3, 3, 1, 5, 5, 5, 35, 8, 7, 4, 5, 15, 10, 10, 10, 10, 10, 10, 10, 10, 10];
+      this.updateClock = __bind(this.updateClock, this);      this.limits = [3, 15, 10, 3, 3, 3, 3, 3, 1, 5, 5, 5, 35, 8, 7, 4, 5, 5, 15, 10, 10, 10, 10, 10, 10, 10, 10, 10];
       this.startTime = new Date();
     }
 

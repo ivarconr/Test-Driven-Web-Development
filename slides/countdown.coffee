@@ -18,7 +18,8 @@ class Clock
       7, # tdd 2
       4, # tdwd intro
       5, # intro til oppgave
-      15, # oppsett og iterasjon 1
+      5, # oppsett
+      15, # iterasjon 1
       10, # iterasjon 2
       10, # iterasjon 3
       10, # iterasjon 4
