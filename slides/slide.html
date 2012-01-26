@@ -342,6 +342,7 @@ Sikre at systemet tilfredstiller de funksjonelle kravene som er satt til løsnin
 
 ---
 
+
 # Iterasjon 1
 
 <div class="moody box">
@@ -396,21 +397,26 @@ Instanser av modellen - inkludert alle datafelter - skal kunne lagres til databa
 
 ---
 
+
 # Iterasjon 3
 
-10 min - Første funksjonelle test (mye hjelp). Må lage controller-pakke i test + test-klassen. 
-Lage en "test" klasse som heter TodoFunctionalTest
-
+shouldGetAddTodo, hent add og se man får 200 OK
 
 ---
 
 # Iterasjon 4
-Test-navn: shouldPostNewTodo
+Test-navn: shouldPostAndVerifyThatNewTodoIsStored
 todo:  POST til todo/create med 2 params HashMap
 
 ---
 
 # Iterasjon 5
+
+TestNavn: shouldRedirectAfterStoringTodo
+
+---
+
+# Iterasjon 6
 
 <div class="moody box">
 .label[Hva skal implementeres?]
@@ -437,7 +443,7 @@ todo:  POST til todo/create med 2 params HashMap
 
 ---
 
-# Iterasjon 6
+# Iterasjon 7
 
 <div class="moody box">
 .label[Hva skal implementeres?]
@@ -466,29 +472,38 @@ Et form-element som over kan hentes med følende css-selectors:
 
 ---
 
-# Iterasjon 7
-
-TestNavn: shouldRedirectAfterStoringTodo
-
----
-
 # Iterasjon 8
-TestNavn: shouldRequireDescription
+
+shouldGetIndex, hent index og se man får 200 OK
 
 ---
 
 # Iterasjon 9
-TestNavn: shouldRequirePriority
 
----
+<div class="moody box">
+.label[Hva skal implementeres?]
 
-# Iterasjon 10
-TestNavn: shouldNotAllowPriorityLargerThan3
+* Når man åpner .tt[/todo/index] skal man få listen over eksisterende todos
 
+</div>
+
+<div class="moody box">
+.label[Tips]
+
+* Selenium passer til denne testen
+* Man trenger en index-metode i Todo-kontrolleren som leverer alle Todos til viewet
+
+</div>
 
 ---
 
 # Iterasjon 11
+
+TestNavn: shouldRequireDescription
+
+---
+
+# Iterasjon 12
 
 <div class="moody box">
 .label[Hva skal implementeres?]
