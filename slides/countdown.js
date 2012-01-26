@@ -45,12 +45,12 @@
       var clock;
       var _this = this;
       this.slides = $('div.slide .content');
-      clock = [];
+      if (this.slides.length !== this.limits.length) {
+        console.log("Warning: there is " + this.slides.length + " written slides while the limit is only configured with " + this.limits.length + " slides");
+      }
+      clock = $('<div>').addClass('clock');
       $.each(this.slides, function(i, slide) {
-        if (_this.isCurrentSlide(slide)) {
-          clock = $('<div>').addClass('clock');
-          return $(slide).append(clock);
-        }
+        if (_this.isCurrentSlide(slide)) return $(slide).append(clock);
       });
       return clock;
     };

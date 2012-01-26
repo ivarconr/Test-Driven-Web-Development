@@ -62,10 +62,11 @@ class Clock
 
   appendClockToCurrentSlide: =>
     @slides = $('div.slide .content')
-    clock = []
+    if @slides.length isnt @limits.length
+      console.log("Warning: there is #{@slides.length} written slides while the limit is only configured with #{@limits.length} slides")
+    clock = $('<div>').addClass('clock')
     $.each(@slides, (i, slide) =>
       if @isCurrentSlide(slide)
-        clock = $('<div>').addClass('clock')
         $(slide).append(clock)
     )
 
