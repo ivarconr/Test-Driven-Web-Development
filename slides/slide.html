@@ -267,9 +267,17 @@ Sikre at systemet tilfredstiller de funksjonelle kravene som er satt til løsnin
 - Dokumentasjon
 - Testbar kode
 
+
+
+---
+
+.cente.middle
+# Hovedpoenget med TDD er ikke å skrive testene først. 
+
 <div class="box happy center">
 **Iterere over designet konstant, hvor vi stadig gjør små forbedringer.**
 </div>
+
 
 ---
 
@@ -337,6 +345,7 @@ Sikre at systemet tilfredstiller de funksjonelle kravene som er satt til løsnin
 # Iterasjon 1
 
 10 min - Første funksjonelle test (mye hjelp). Må lage controller-pakke i test + test-klassen. 
+Lage en "test" klasse som heter TodoFunctionalTest
 
 ---
 
@@ -451,32 +460,30 @@ Instanser av modellen - inkludert alle datafelter - skal kunne lagres til databa
 ---
 
 # Iterasjon 6
-
-todo: functional
+Test-navn: shouldPostNewTodo
+todo:  POST til todo/create med 2 params HashMap
 
 ---
 
 # Iterasjon 7
 
-todo: functional
+TestNavn: shouldRedirectAfterStoringTodo
 
 ---
 
 # Iterasjon 8
-
-todo: functional
+TestNavn: shouldRequireDescription
 
 ---
 
 # Iterasjon 9
-
-todo: functional
+TestNavn: shouldRequirePriority
 
 ---
 
 # Iterasjon 10
+TestNavn: shouldNotAllowPriorityLargerThan3
 
-todo: functional
 
 ---
 

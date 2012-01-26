@@ -12,27 +12,27 @@ Tidsskjema
 120min totalt
 
 -- KRK
-5 min - Lage todo-prosjekt og starte
+1. 5 min - Lage todo-prosjekt og starte
 
 -- ICO
-10 min - Første funksjonelle test (mye hjelp). Må lage controller-pakke i test + test-klassen. 
+2. 10 min - Første funksjonelle test (mye hjelp). Må lage controller-pakke i test + test-klassen. 
 
 --> KRK
-10 min - Første selenium test. Trenger en form, med to input-felt --> 
+3. 10 min - Første selenium test. Trenger en form, med to input-felt --> 
 --
 
  --> KRK
-10min - Test som verifiserer oprette TODO med 2 konstruktør arg
-10min - Test som verifiserer lagring til in=mem-db av TOD's. Implementer kode. Mye magi i play som kobler modeller til DB. 
+4. 10min - Test som verifiserer oprette TODO med 2 konstruktør arg
+5. 10min - Test som verifiserer lagring til in=mem-db av TOD's. Implementer kode. Mye magi i play som kobler modeller til DB. 
 5min - Test som lik som forrige men 2 todo's. fixtures.delete
 ---
 
 --> ICO
-10 min - POST til todo/create med 2 params HashMap
-5 min - shouldRedirectAfterStoringTodo
-10 min - shouldRequireDescription (skal redirecte til 
-5 min - shouldRequirePriority
-5 min - shouldNotAllowPriorityLargerThan3
+6. 10 min - POST til todo/create med 2 params HashMap
+7. 5 min - shouldRedirectAfterStoringTodo
+8. 10 min - shouldRequireDescription (skal redirecte til 
+9. 5 min - shouldRequirePriority
+10. 5 min - shouldNotAllowPriorityLargerThan3
 
 --> KRK
 10 min - Verify that error's are showed.
