@@ -74,3 +74,22 @@ div.box, code {
   text-align: center;
   font-size: 0.7em;
 }
+
+li li {
+  font-size: 0.89em;
+  color: #252525;
+}
+
+.tt {
+  font-family: courier;
+  font-weight: bold;
+  font-size: 0.85em;
+}
+
+.red {
+  color: #fa0000;
+}
+
+.small {
+  font-size: 0.5em;
+}
