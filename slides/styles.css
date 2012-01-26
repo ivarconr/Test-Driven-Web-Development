@@ -98,3 +98,8 @@ li li {
 .small {
   font-size: 0.5em;
 }
+
+.footnote {
+  position: absolute;
+  bottom: 3em;
+}
