@@ -1,8 +1,10 @@
 #{extends 'main.html' /}
 #{set title:'List todo' /}
 
+<h1>Liste over planlagte oppgaver:</h1>
+
 <ul>
 #{list items:todos, as:'todo'}
-  <li>${todo.description} - ${todo.priority}</li>
+  <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>${todo.description} - ${todo.priority}</li>
 #{/list}
 </ul>

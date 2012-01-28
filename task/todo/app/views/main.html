@@ -7,10 +7,23 @@
         <link rel="stylesheet" media="screen" href="@{'/public/stylesheets/main.css'}">
         #{get 'moreStyles' /}
         <link rel="shortcut icon" type="image/png" href="@{'/public/images/favicon.png'}">
-        <script src="@{'/public/javascripts/jquery-1.6.4.min.js'}" type="text/javascript" charset="${_response_encoding}"></script>
-        #{get 'moreScripts' /}
-    </head>
+        <link type="text/css" href="@{'/public/stylesheets/smoothness/jquery-ui-1.8.17.custom.css'}" rel="stylesheet" />
+        <script src="@{'/public/javascripts/jquery-1.7.1.min.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+        <script src="@{'/public/javascripts/jquery-ui-1.8.17.custom.min.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+		#{get 'moreScripts' /}
+		<script>
+			$(function() {
+				$("ul").sortable();
+				$("ul").disableSelection();
+				//$( "a").button();
+			});
+		</script>
+</head>
     <body>
+	    <div id="menu">
+	    	<a href="/todo/index">Liste</a>
+	    	<a href="/todo/add">Opprett</a>
+	    </div>
         #{doLayout /}
     </body>
 </html>

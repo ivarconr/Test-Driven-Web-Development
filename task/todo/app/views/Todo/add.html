@@ -7,11 +7,12 @@
    #{errors}
        <li>${error}</li>
    #{/errors}
+   
+<br />
+<br />
 #{/ifErrors}
 
-<br />
-<br />
-
+<h1>Legg til en ny TODO:</h1>
 <form action="/todo/create" method="POST">
 	<label for="description">Beskrivelse</label>
 	<input id="description" name="description" value="${flash.description}" />
