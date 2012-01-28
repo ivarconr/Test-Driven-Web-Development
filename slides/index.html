@@ -455,14 +455,13 @@ Metoden skal også opprette en ny *todo* basert på input og lagre den.
 <div class="moody box">
 .label[Hva skal implementeres?]
 
-Vi ønsker at det skal finnes en index-action på todo-kontrolleren. Vi ønsker også 
-at den skal svare på "/todo" (istedenfor /todo/index). 
+Vi ønsker at det skal finnes en index-action på todo-kontrolleren slik at løsningen vår svarer på "todo/index". 
 
 </div>
 <div class="moody box">
 .label[Tips]
 
-* Du inn i conf/routes og legge til en konfigurasjon som sier at for GET på /todo så skal Play benytte. 
+* Dette er en funksjonell test 
 </div>
 
 ---
@@ -576,6 +575,7 @@ Vi ønsker å kreve at todo-er som opprettes har en beskrivelse.
 * Benytt @Required anotering i models
 * Man trenger en index-metode i Todo-kontrolleren som leverer alle Todos til viewet
 * Har en lagre-funksjon i Play som validerer og lagrer: .tt[todo.validateAndSave()]
+* Vi må også verifisere at requesten blir redirgert tilbake til .tt[/todo/add]
 </div>
 
 ---
