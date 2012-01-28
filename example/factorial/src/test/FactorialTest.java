@@ -6,12 +6,19 @@ import static junit.framework.Assert.assertEquals;
 
 public class FactorialTest {
 
-    private int factorial(int i) {
-        if (i < 2) {
+    /**
+     * Method that performs the mathematical factorial
+     * operation (n!) for values up to 10!
+     *
+     * @param n
+     * @return n!
+     */
+    private int factorial(int n) {
+        if (n < 2) {
             return 1;
         }
 
-       return factorial(i-1)*i;
+       return factorial(n-1)*n;
     }
 
 
