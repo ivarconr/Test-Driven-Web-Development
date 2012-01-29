@@ -414,16 +414,17 @@ Vi skal bruke TDD til å implementere metoden .tt[factorial(int n)] i Java. Denn
 # Opprett Todo!
 
 <div class="moody box">
+
 1. Start &raquo; Kjør/Run &raquo; .tt[cmd]
 1. .tt[cd c:\dev\play]
 1. .tt[play new todo]
 1. .tt[play eclipsify todo]
 1. I eclipse: File/Import/General/Existing project for å importere prosjektet
 1. .tt[play test todo]
+
 </div>
 
 ---
-
 
 # Iterasjon 1
 
@@ -443,6 +444,40 @@ Vi skal bruke TDD til å implementere metoden .tt[factorial(int n)] i Java. Denn
 1. Opprett klassen .tt[models.Todo] og implementer nødvendig funksjonalitet i klassens konstruktør
 
 </div>
+
+---
+
+# LF Iterasjon 1
+
+
+    // Test:
+    public class TodoTest extends UnitTest {
+  
+      @Test
+      public void testThatWeCanCreateTodo() {
+        Todo todo = new Todo("beskrivelse", 1); 
+    
+        assertEquals("beskrivelse", todo.description);    
+        assertEquals(1, todo.priority);
+      }
+    }
+
+<div></div>
+
+    // Implementasjon:
+    package models;
+
+    public class Todo {
+
+      public String description;
+      public int priority;
+
+      public Todo(String description, int priority) {
+        this.description = description;
+        this.priority = priority;
+      }
+
+    }
 
 ---
 
@@ -479,6 +514,38 @@ Instanser av modellen - inkludert alle datafelter - skal kunne lagres til databa
 
 ---
 
+# LF Iterasjon 2
+
+    .java
+    // Test:
+    @Test
+    public void testThatWeCanStoreTodo() {
+      Todo todo = new Todo(null, 0);
+      todo.save();
+
+      List<Todo> todos = Todo.findAll();
+      assertEquals(1, todos.size());
+
+      Todo firstTodo = todos.get(0);
+      assertEquals("beskrivelse", firstTodo.description);
+      assertEquals(1, firstTodo.priority);
+    }
+
+<div></div>
+
+    // Implementasjon:
+    @Entity
+    public class Todo extends Model {
+
+    public String description;
+    public int priority;
+
+    public Todo(String description, int priority) {
+      this.description = description;
+      this.priority = priority;
+    }
+
+---
 
 # Iterasjon 3
 
@@ -503,7 +570,6 @@ Vi skal implementere kontrolleren som tilbyr GET på følgende URL: .tt[/todo/ad
 - Må arve fra *Controller*
 - Alle actions skal være **static** i play.
 </div>
-
 
 ---
 
@@ -589,6 +655,26 @@ Vi skal viderutvikle create-metoden slik at den redirecter oss til .tt[/todo/ind
 
 ---
 
+# LF Iterasjon 7
+
+    // Test
+    #{selenium}
+      // Open page, and check that no error occured
+      open('/todo/add')
+      assertTitle('Add Todo')
+      assertNotTitle('Application error')
+    #{/selenium}
+
+
+<div></div>
+
+    .html
+    // Implementasjon:
+    #{extends 'main.html' /}
+    #{set title:'Add Todo' /}
+
+---
+
 # Iterasjon 8
 
 <div class="moody box">
@@ -620,6 +706,40 @@ Et form-element som over kan hentes med følende css-selectors:
 
 ---
 
+# LF Iterasjon 8
+
+    // Test
+    #{selenium}
+      // Check that content contains a form
+      open('/todo/add')
+      verifyElementPresent('css=form')
+      verifyElementPresent('css=input#description')
+      verifyElementPresent('css=input#priority')
+      verifyElementPresent('css=input[type=submit]')
+    #{/selenium}
+
+<div></div>
+
+    .html
+    // Implementasjon:
+
+    <h1>Legg til en ny TODO:</h1>
+    <form action="/todo/create" method="POST">
+      <label for="description">Beskrivelse</label>
+      <input id="description" name="description" />
+
+      <br />
+
+      <label for="priority">Prioritet</label>
+      <input id="priority" name="priority" type="number" />
+
+      <br />
+
+      <input type="submit" />
+    </form> 
+
+---
+
 # Iterasjon 9
 
 <div class="moody box">
@@ -633,9 +753,38 @@ Et form-element som over kan hentes med følende css-selectors:
 .label[Tips]
 
 * Selenium passer til denne testen
+* Fixtures kan brukes til å mocke test-data
 * Man trenger en index-metode i Todo-kontrolleren som leverer alle Todos til viewet
 
 </div>
+
+---
+
+# LF Iterasjon 9
+
+    // Test
+    #{fixture delete:'all', load:'data.yml' /}
+    #{selenium}
+      open('/todo/index')
+      verifyText('css=li:nth-child(1)', 'Viktig todo*')
+      verifyText('css=li:nth-child(2)', 'Lala en kulere beskrivelse*')
+      verifyText('css=li:nth-child(6)', 'Lala en kul beskrivels*')
+    #{/selenium}
+
+<div></div>
+
+    .html
+    // Implementasjon:
+    #{extends 'main.html' /}
+    #{set title:'List todo' /}
+
+    <h1>Liste over planlagte oppgaver:</h1>
+
+    <ul>
+      #{list items:todos, as:'todo'}
+      <li class="ui-state-default">${todo.description} - ${todo.priority}</li>
+      #{/list}
+    </ul>
 
 ---
 
@@ -675,6 +824,40 @@ Vi ønsker å kreve at todo-er som opprettes har en beskrivelse.
 
 </div>
 
+---
+
+# LF Iterasjon 11
+
+    // Test
+    #{selenium}
+      // Verify that error's are showed.
+      open('/todo/add')
+      type('css=input#description', '')
+      type('css=input#priority', '')
+      clickAndWait('css=input[type=submit]')
+    
+      verifyTextPresent('Error')    
+    #{/selenium}
+
+<div></div>
+
+    .html
+    // Implementasjon:
+    #{extends 'main.html' /}
+    #{set title:'Add Todo' /}
+
+    #{ifErrors}
+      <h1>Error…</h1>
+ 
+      #{errors}
+        <li>${error}</li>
+      #{/errors}
+   
+    #{/ifErrors}
+
+    <h1>Legg til en ny TODO:</h1>
+    
+    <!-- resten av "add.html" her -->
 
 ---
 
