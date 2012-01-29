@@ -24,18 +24,12 @@ _.tt[kris-mikael.krister@iteraconsulting.no]_
 
 ---
 
-# Introduction av Itera Consulting
-
-Bla bla.. her kommer tommy med sine slides om selskapet...
-
----
-
 # Agenda
 
 1. Testing intro
  - Hvorfor tester vi?
- - Ulike Testtyper
- - Flere nivåer med testing
+ - Ulike test-typer
+ - Testing i flere nivå 
 2. Play framework
  - Introduksjon til rammeverket
  - Praktisk eksempel (følger med på minnestick)
@@ -54,32 +48,74 @@ Bla bla.. her kommer tommy med sine slides om selskapet...
  - Teste validering
  - Teste viewet  
 
-
----
-
-# Testing intro
-
-Et vakkert testbilde her...
-
 ---
 
 # Hvorfor tester vi?
 
-- Sikre at koden *løser problemet* vårt
-- Sikre at koden *ikke* gjør noe annet
-- Beskytte koden mot **bieffekter** ved fremtidige endringer
- - Kan refaktorere på en tryggere måte
-- Fungerer som dokumentasjon
-- Gir økt kodekvalitet
- - Finner bugs tidligere (billigere å rette i dag enn om 2 uker)
+- **Øke kodekvaliten**
+ - Finner feil/bugs tidligere
  - Mindre debugging
-- White-box vs. black-box
+- Sikre at koden *løser problemet* vårt
+- Sikre at koden *ikke* gjør noe annet enn den skal
+- Beskytte koden mot **bieffekter** ved fremtidige endringer
+ - Tryggere å refaktorere 
+- **Fungerer som dokumentasjon**
+ - Hvordan skal koden benyttes?
+ - Hvordan instansiere opp et objekt?
+ - Hva er grenseverdiene?
 
-### God testpraksis
+
+---
+
+.center
+# Det tar tid fikse feil i koden
+<img src="images/bugs_tid.png" />
+
+
+---
+
+.center
+# Vi ønsler å unngå feil i produksjon
+<img src="images/parkometer_fail.jpg" style="height: 70%;" />
+
+
+
+---
+
+###White-box testing
+<img src="images/white-box.png" />
+
+<br /><br />
+
+
+###Black-box testing
+<img src="images/black-box.png" />
+
+
+---
+
+# God testpraksis
+- Små tester som tester som verifiserer konkrete funksjoner
 - Automatiserte tester
-- Testene kjøres ved insjekk av ny kode
-- Testene er raske
-- Testene kan kjøres i vilkårlig rekkefølge
+- Raske tester
+- Testene skal kunne kjøre i vilkårlig rekkefølge
+- Testene kjøres ved **insjekk** av ny kode
+ - Typisk av en *continous integration* server
+
+
+
+<div class="moody box">
+
+###Dersom koden er vanskelig å teste er det et tegn på dårlig design...
+
+</div>
+
+---
+
+.center
+# Testing i flere nivå
+
+<img src="images/tests.png" />
 
 ---
 
@@ -87,22 +123,31 @@ Et vakkert testbilde her...
 .footnote[.red.bold[*] Tilhører kategorien white-box testing]
 
 <div class="box happy">
-Validerer at *isolerte enheter* i applikasjonen fungerer slik de skal.
+###Validerer at *isolerte enheter* i applikasjonen fungerer slik de skal.
 </div>
 
 - Tester små biter av koden
 - Tester *betinget* funksjonalitet
 - *Isolerte* tester. 
- - "*mocker*" avhengigheter (f.eks in-mem-db)
-- Dersom koden er vanskelig å teste? Et tegn på dårlig design..
+- Involverer typisk bare en klasse
+- Faker avhengiger via "*mocks*" 
+ - F.eks: fake en database basert på API
 
+
+### Eksempler i WEB-app
+- Benyttes til å validere domenemodeller
+
+
+---
+
+#Enhetstester: eksempel
 
 <div class="code">
 
-    public class TestFoobar{
+    public class FoobarTest{
 
       @Before
-      public void setUp() throws Exception {
+      public void setUp() {
         // Kode som kjøres før hver test
       }
 
@@ -120,16 +165,17 @@ Validerer at *isolerte enheter* i applikasjonen fungerer slik de skal.
 .footnote[.red.bold[*] Form for black-box testing]
 
 <div class="box happy">
-Fokuserer på å teste en spesifikk funksjon i applikasjonen. 
+###Fokuserer på å teste en spesifikk funksjon i applikasjonen. 
 </div>
 
-### Hvorfor?
 - Verifiserer at grensesnitt følger kontrakten. 
 - Kan fortelle oss at "noe i koden" brakk
-- Teste koden på tilsvarende måte som den blir konsumert. 
+- Tester koden på tilsvarende måte som den blir konsumert. 
+- Innvolverer typisk flere klasser
 
 ### Eksempler i WEB-app
 - Teste at kontrollerene håndterer forespørsler korrekt.
+- Verifisere at en HTML-form finnes på siden. 
 - Ble brukeren redirigert til riktig side?
 - Er brukeren autentisert korrekt?
 
@@ -139,25 +185,20 @@ Fokuserer på å teste en spesifikk funksjon i applikasjonen.
 .footnote[.red.bold[*] Black-box testing]
 
 <div class="box happy">
-Sikre at systemet tilfredstiller de funksjonelle kravene som er satt til løsningen.
+### Sikre at systemet tilfredstiller kravene som er satt til løsningen.
 </div>
 
 ### Hvorfor? 
 - Tester systemetet fra *brukerens* perspektiv
 - Høy-nivå tester som verifiserer hele brukerhistorier
-- Sikre at systemet løser oppgavene vi ønsker at det skal løse, uten å fokuserer på hvordan oppgavene løses. 
+- Sikre at systemet løser *kravene* 
+- Fokuserer *ikke* på hvordan et krav er løst
 
 ### Eksempler i en WEB-applikasjon
-- Verifisere at en HTML-form finnes.
+- Verifisere at en HTML-form finnes på.
 - Verifisere at det er mulig å legge til en kommentar.
 - Verifisere at brukeren havner på forsiden etter å lagt til en kommentar.
 
----
-
-.center
-# Flere nivåer med testing
-
-<img src="images/tests.png" />
 
 ---
 
@@ -281,21 +322,29 @@ Vi skal bruke TDD til å implementere metoden .tt[factorial(int n)] i Java. Denn
 ---
 
 # TDD: fordeler
-- Koden får god testdeking
+- **Koden får god testdeking**
  - Gir tiltro til at koden er korrekt
  - Koden blir garantert testbar
  - God dokumentasjon
  - Beskytter kode ved fremtidige endringer
  - Kan også teste  uten TDD? Ikke disiplinert nok? Mangel på tid.., fredag ettermiddag.., vi har jo *manuelt* testet at koden virker!!!
-- TDD gir oss hurtig tilbakemelding
+- **DD gir oss hurtig tilbakemelding**
  - Mindre bruk av debugger
  - Gir mulighet til å oppdage feil tidligere
-- Reduserer mengden av "kjekt å ha kode"
-- Tvinger utvikler til å fokusere på mindre biter av problemet
+- **Reduserer mengden av "kjekt å ha kode"**
+- **Tvinger utvikler til å fokusere på mindre biter av problemet**
  - Må fokusere på grensesnitt før kode implementeres
  - Tar små steg i retning av løsningen
  - Modularisert og fleksibel kode som enkelt lar seg utvide. 
-- Gjør det trygt og enkelt å refaktorere kode
+ - Mindre komplekst  enn å designe en hel løsning upfront
+- **Gjør det trygt og enkelt å refaktorere kode**
+
+
+---
+
+.center
+# TDD: ungå waste
+<img src="images/balcony.jpg" />
 
 
 
@@ -319,7 +368,8 @@ Vi skal bruke TDD til å implementere metoden .tt[factorial(int n)] i Java. Denn
 ---
 
 .center.middle
-# Hovedpoenget med TDD er ikke å skrive testene først men derimot at vi <u>iterere</u> over <u>designet</u> kontinuerlig og stadig gjør små <u>forbedringer</u>.
+<div class="happy box">
+# Hovedpoenget med TDD er ikke å skrive testene først, men derimot at vi <u>iterere</u> over <u>designet</u> kontinuerlig og stadig gjør små <u>forbedringer</u>.
 </div>
 
 ---
@@ -636,6 +686,13 @@ Vi ønsker å kreve at todo-er som opprettes har en beskrivelse.
 3. The Three Laws of TDD - Uncle Bob
  - http://butunclebob.com/ArticleS.UncleBob.TheThreeRulesOfTdd
 4. http://en.wikipedia.org/wiki/Test-driven_development
+
+
+---
+
+.center.middle
+# Takk for oss!
+(Slideshow created using [remark](http://github.com/gnab/remark).)
 
     </textarea>
     <div id="slideshow"></div>
