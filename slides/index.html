@@ -253,45 +253,74 @@ Sikre at systemet tilfredstiller de funksjonelle kravene som er satt til løsnin
 
 ---
 
+# Test-drevet utvikling
 
-# Test-driven development (TDD)
+<div class="happy box">
 
-### Hva?
-1. Skriv en enhetstest, som feiler
-2. Skriv kode som fikser testen
-3. Refaktorer koden
-4. Repeter fra 1. til du er ferdig. 
+.label[TDD by example]
+
+Vi skal bruke TDD til å implementere metoden .tt[factorial(int n)] i Java. Denne metoden skal regne ut og returnere fakultetet til tallet n som sendes inn som argument til metoden.
+
+*Eksempler:*<br />
+.tt[2! = 2 x 1 = 2] <br />
+.tt[5! = 5 x 4 x 3x 2 x 1 = 120]
+</div>
+
+###Definisjon av fakultet:
+<img src="images/factorial.png" />
 
 
-### Hvorfor?
-- Sikrer at vi tester koden vår
- - Ikke disiplinert nok? 
- - Mangel på tid, fredag ettermiddag.. etc
- - Vi har jo *manuelt* testet at koden virker??
-- Verifikasjon av oppførsel
-- Dokumentasjon
-- Testbar kode
+---
+
+.center
+# TDD: en itera*tiv* prosess
+
+<img src="images/tdd-prcoess.png" />
+
+
+---
+
+# TDD: fordeler
+- Koden får god testdeking
+ - Gir tiltro til at koden er korrekt
+ - Koden blir garantert testbar
+ - God dokumentasjon
+ - Beskytter kode ved fremtidige endringer
+ - Kan også teste  uten TDD? Ikke disiplinert nok? Mangel på tid.., fredag ettermiddag.., vi har jo *manuelt* testet at koden virker!!!
+- TDD gir oss hurtig tilbakemelding
+ - Mindre bruk av debugger
+ - Gir mulighet til å oppdage feil tidligere
+- Reduserer mengden av "kjekt å ha kode"
+- Tvinger utvikler til å fokusere på mindre biter av problemet
+ - Må fokusere på grensesnitt før kode implementeres
+ - Tar små steg i retning av løsningen
+ - Modularisert og fleksibel kode som enkelt lar seg utvide. 
+- Gjør det trygt og enkelt å refaktorere kode
+
+
+
+---
+
+# TDD: svakheter
+- Må skrive mer kode totalt
+- Mange tester og høy testdekning gir ikke høyere **kodekvalitet**
+ - Kan bare garantere et *minimum* av kvalitet. 
+ - Det er kvaliteten på testene (og koden) som er avgjørende
+- Er en krevende prosess
+ - Vanskelig å skrive gode, små og konkrete tester
+ - Tar lengre tid til vi får funksjonalitet?
+- Rammeverk og bibliotek legger føringer for løsningens design
+ - Vi må ofte tilpasse hvordan vi planlegger designet vårt basert på rammeverk vi bruker. 
+- Kan på kort sikt gjøre deg mindre produktiv
+ - bruker tid på å løse alle småfeil tidlig. 
 
 
 
 ---
 
 .center.middle
-# Hovedpoenget med TDD er ikke å skrive testene først. 
-
-<div class="box happy center">
-**Iterere over designet konstant, hvor vi stadig gjør små forbedringer.**
+# Hovedpoenget med TDD er ikke å skrive testene først men derimot at vi <u>iterere</u> over <u>designet</u> kontinuerlig og stadig gjør små <u>forbedringer</u>.
 </div>
-
-
----
-
-.center
-# TDD prosessen
-<img src="images/tdd.png" />
-
-.small[http://en.wikipedia.org/wiki/File:Test-driven_development.PNG]
-
 
 ---
 
@@ -595,6 +624,18 @@ Vi ønsker å kreve at todo-er som opprettes har en beskrivelse.
 * .tt[http://www.playframework.org/documentation/1.2.4/tags#errors]
 
 </div>
+
+
+---
+
+# Ressurser
+
+1. Test Driven Development: By Example - Kent Beck
+2. Introduction to Test Driven Development 
+ - http://www.agiledata.org/essays/tdd.html
+3. The Three Laws of TDD - Uncle Bob
+ - http://butunclebob.com/ArticleS.UncleBob.TheThreeRulesOfTdd
+4. http://en.wikipedia.org/wiki/Test-driven_development
 
     </textarea>
     <div id="slideshow"></div>
