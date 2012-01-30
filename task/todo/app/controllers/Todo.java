@@ -10,7 +10,7 @@ public class Todo extends Controller {
 	 * Iteration 5: just render index.
 	 */
 	public static void index() {
-		List<models.Todo> todos = models.Todo.findAllSorted();				
+		List<models.Todo> todos = models.Todo.findAllSorted();	
 		render(todos);
 	}
 
@@ -25,7 +25,7 @@ public class Todo extends Controller {
 
 	/**
 	 * Iteration 4 : save, no validation 
-	 * Iteration 5 : redirect to index
+	 * Iteration 6 : redirect to index
 	 * Iteration 10: add validation 
 	 * 
 	 * Action where the user POST required attributes for creating 
@@ -47,7 +47,7 @@ public class Todo extends Controller {
 		}
 		//End 11. 
 		
-		//Iteration 5. 
+		//Iteration 6. 
 		index();
 	}
 
