@@ -39,8 +39,8 @@ _.tt[kris-mikael.krister@iteraconsulting.no]_
 3. Test-driven development
  - Introduksjon til TDD
  - Kodeeksempel
-4. Test-drevet webutvikling
- - Introduksjon
+4. Workshop
+ - Utfordringer med test-drevet webutvikling
  - Introdusere oppgaven
  - Teste kontrollere
  - Teste modeller
@@ -73,14 +73,14 @@ _.tt[kris-mikael.krister@iteraconsulting.no]_
 ---
 
 .center
-# Det tar tid fikse feil i koden
+# Det tar tid å fikse feil i koden
 <img src="images/bugs_tid.png" />
 
 
 ---
 
 .center
-# Vi ønsler å unngå feil i produksjon
+# Vi ønsker å unngå feil i produksjon
 <img src="images/parkometer_fail.jpg" style="height: 70%;" />
 
 
@@ -103,8 +103,8 @@ _.tt[kris-mikael.krister@iteraconsulting.no]_
 - Små tester som tester som verifiserer konkrete funksjoner
 - Automatiserte tester
 - Raske tester
-- Testene skal kunne kjøre i vilkårlig rekkefølge
-- Testene kjøres ved **insjekk** av ny kode
+- Testene skal kunne kjøres i vilkårlig rekkefølge
+- Testene kjøres ved **innsjekk** av ny kode
  - Typisk av en *continous integration* server
 
 
@@ -259,17 +259,27 @@ _.tt[kris-mikael.krister@iteraconsulting.no]_
 1. Last ned og unzip .tt[play.zip]
 1. Fra kommandolinje: .tt[play new minApplikasjon]
 1. .tt[play run minApplikasjon]
-</div>
-
-<div class="notes">
-
-  * echo $java_home
-  * which play
-  * play new hello_world
-  * tree
-  * forklar tingene, spesielt MVC og test
 
 </div>
+
+    .html
+    ├── app
+    │   ├── controllers
+    │   │   └── Application.java
+    │   ├── models
+    │   └── views
+    │       ├── Application
+    │       │   └── index.html
+    │       ├── errors
+    │       │   ├── 404.html
+    │       │   └── 500.html
+    │       └── main.html
+    ├── ...
+    └── test
+        ├── Application.test.html
+        ├── ApplicationTest.java
+        ├── BasicTest.java
+        └── data.yml
 
 ---
 
@@ -393,11 +403,11 @@ Vi skal bruke TDD til å implementere metoden .tt[factorial(int n)] i Java. Denn
 ---
 
 .center.middle
-# Test-drevet webutvikling &raquo; workshop
+# Workshop
 
 ---
 
-# Tradisjonelle utfordringer ved webutvikling
+# Utfordringer ved test-drevet webutvikling
 
 <div class="moody box">
 
