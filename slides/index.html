@@ -544,7 +544,7 @@ Instanser av modellen - inkludert alle datafelter - skal kunne lagres til databa
     // Test:
     @Test
     public void testThatWeCanStoreTodo() {
-      Todo todo = new Todo(null, 0);
+      Todo todo = new Todo("beskrivelse", 1);
       todo.save();
 
       List<Todo> todos = Todo.findAll();
