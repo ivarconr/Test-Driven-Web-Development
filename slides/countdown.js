@@ -14,7 +14,7 @@
       var availableTime, millisecondsUsed, minutesUsed;
       var _this = this;
       millisecondsUsed = new Date().getTime() - this.startTime.getTime();
-      minutesUsed = Math.floor(millisecondsUsed / 1000);
+      minutesUsed = Math.floor(millisecondsUsed / 1000 / 60);
       availableTime = 0;
       return $.each(this.slides, function(i, slide) {
         var clock, slideLimit;

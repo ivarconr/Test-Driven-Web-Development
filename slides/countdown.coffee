@@ -34,7 +34,7 @@ class Clock
 
   updateClock: =>
     millisecondsUsed = new Date().getTime() - @startTime.getTime()
-    minutesUsed = Math.floor(millisecondsUsed / 1000 ) # / 60)
+    minutesUsed = Math.floor(millisecondsUsed / 1000  / 60)
     availableTime = 0
     
     $.each(@slides, (i, slide) =>
