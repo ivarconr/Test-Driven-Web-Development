@@ -608,6 +608,28 @@ Vi skal implementere kontrolleren som tilbyr GET på følgende URL: .tt[/todo/ad
 
 ---
 
+# LF Iterasjon 3
+    //Test
+    public class TodoFunctionalTest extends FunctionalTest  {
+	
+	  @Test
+      public void shouldReturnOkForAddTodoPage() {
+        Response response = GET("/todo/add");
+        assertIsOk(response);
+      }
+    }
+
+<br />
+
+    //Kode
+    public class Todo extends Controller {
+	  public static void add() {
+		render();
+	  }
+    }
+
+---
+
 # Iterasjon 4
 
 <div class="moody box">
@@ -630,6 +652,37 @@ Metoden skal også opprette en ny *todo* basert på input og lagre den.
 
 ---
 
+# LF Iterasjon 4
+    public class TodoFunctionalTest extends FunctionalTest  {	
+
+	  @Before
+	  public void setUp() {
+		Fixtures.deleteDatabase();
+	  }
+
+	  @Test
+      public void shouldCreateAndStoreTodo() {
+		Map<String, String> params = new HashMap<String, String>();
+		
+		params.put("description", "En beskrivelse");
+		params.put("priority", "1"); 
+		
+		POST("/todo/create", params);
+        	        
+		assertEquals(1, Todo.findAll().size());	        	        
+      }
+    }
+<br />
+
+    public class Todo extends Controller {	
+	  public static void create(String description, int priority) {
+		models.Todo todo = new models.Todo(description, priority);
+        todo.save();		
+	  }
+    }
+
+---
+
 # Iterasjon 5
 
 <div class="moody box">
@@ -646,6 +699,27 @@ Vi ønsker at det skal finnes en index-action på todo-kontrolleren slik at løs
 
 ---
 
+# LF Iterasjon 5
+    public class TodoFunctionalTest extends FunctionalTest  {	
+
+
+	  @Test
+      public void shoulGetTodoIndex() {
+        Response response = GET("/todo/index");	        	       
+        assertIsOk(response);      	        
+      }
+    }
+<br />
+
+    public class Todo extends Controller {	
+	  public static void index() {
+		//No code yet
+	  }
+
+---
+
+
+
 
 # Iterasjon 6
 
@@ -660,6 +734,28 @@ Vi skal viderutvikle create-metoden slik at den redirecter oss til .tt[/todo/ind
  
 - ved å kalle en annen metode i kontrolleren vil Play utføre en redirect for oss. 
 </div>
+
+---
+
+# LF Iterasjon 6
+    @Test
+    public void shouldRedirectAfterStoringTodo() {
+		Map<String, String> params = new HashMap<String, String>();
+		
+		params.put("description", "En beskrivelse");
+		params.put("priority", "1"); 
+
+        Response response = POST("/todo/create", params);
+        
+        assertHeaderEquals("Location", "/todo/index", response);	
+    }
+<br />
+
+    public static void create(String description, int priority) {
+		models.Todo todo = new models.Todo(description, priority);		
+		todo.save();
+		index();
+	}
 
 ---
 
@@ -840,6 +936,40 @@ Vi ønsker å kreve at todo-er som opprettes har en beskrivelse.
 * Har en lagre-funksjon i Play som validerer og lagrer: .tt[todo.validateAndSave()]
 * Vi må også verifisere at requesten blir redirgert tilbake til .tt[/todo/add]
 </div>
+
+---
+
+# LF Iterasjon 10
+
+    @Test
+    public void shouldRequireDescription() {
+		Map<String, String> params = new HashMap<String, String>();
+
+		params.put("priority", "1"); 
+
+        Response response = POST("/todo/create", params);	        
+        assertHeaderEquals("Location", "/todo/add", response);	        	        
+    }
+
+    //Kontroller
+    public static void create(String description, int priority) {
+		models.Todo todo = new models.Todo(description, priority);
+				
+		if (!todo.validateAndSave()) {
+			validation.keep();
+			add();
+		}		
+		index();
+	}
+
+    //Modell
+    @Entity
+    public class Todo  extends Model {
+
+	  @Required
+	  public String description;
+      ...
+
 
 ---
 
