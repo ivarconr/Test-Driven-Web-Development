@@ -259,6 +259,7 @@ _.tt[kris-mikael.krister@iteraconsulting.no]_
 1. Last ned og unzip .tt[play.zip]
 1. Fra kommandolinje: .tt[play new minApplikasjon]
 1. .tt[play run minApplikasjon]
+1. Time to try!
 
 </div>
 
@@ -471,8 +472,6 @@ Vi skal bruke TDD til å implementere metoden .tt[factorial(int n)] i Java. Denn
 <div class="moody box">
 .label[Tips]
 
-1. todo: forklar public-variabler i Play
-1. todo: forklar Todo-modellen
 1. Lag en unit-test som lager en .tt["Todo"] og verifiserer at properties blir satt
 1. Se at testen feiler
 1. Opprett klassen .tt[models.Todo] og implementer nødvendig funksjonalitet i klassens konstruktør
@@ -486,7 +485,6 @@ Vi skal bruke TDD til å implementere metoden .tt[factorial(int n)] i Java. Denn
 
     // Test:
     public class TodoTest extends UnitTest {
-  
       @Test
       public void testThatWeCanCreateTodo() {
         Todo todo = new Todo("beskrivelse", 1); 
@@ -551,9 +549,14 @@ Instanser av modellen - inkludert alle datafelter - skal kunne lagres til databa
 # LF Iterasjon 2
 
     .java
-    // Test:
+    @Before
+    public void setup() {
+      Fixtures.deleteDatabase()
+    }
+  
     @Test
     public void testThatWeCanStoreTodo() {
+
       Todo todo = new Todo("beskrivelse", 1);
       todo.save();
 
@@ -567,7 +570,6 @@ Instanser av modellen - inkludert alle datafelter - skal kunne lagres til databa
 
 <div></div>
 
-    // Implementasjon:
     @Entity
     public class Todo extends Model {
 
@@ -676,7 +678,7 @@ Vi skal viderutvikle create-metoden slik at den redirecter oss til .tt[/todo/ind
 - Selenium egner seg til testing av HTML-respons, opprett derfor .tt[test/Todo.test.html]
 - Ta en titt på Selenese sin .tt[assertTitle()]
 - Kjør testen via .tt[http://localhost:9000/@tests]
-- Fiks feilende test (opprett view i .tt[app/views/todo/add.html])
+- Fiks feilende test (opprett et view i .tt[app/views/todo/add.html])
 
 </div>
 
