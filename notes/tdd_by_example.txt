@@ -1,0 +1,94 @@
+--------------
+Steg 1. 0! = 1
+--------------
+    @Test
+    public void shouldReturnOneWhenZeroIn() {
+        assertEquals(1, factorial(0));
+    }
+    
+    //Kode
+    private int factorial(int i) {
+        return 1;
+    }
+
+
+--------------
+Steg 2: 1! = 1
+--------------
+    @Test
+    public void shouldReturnOneWhenOneIn() {
+        assertEquals(1, factorial(1));
+    }
+    //Koden ble grønn, la oss gå videre
+
+--------------
+Steg 3: 2! = 2
+--------------
+    @Test
+    public void shouldReturnTwo() {
+        assertEquals(2, factorial(2));
+    }
+
+    //Kode
+    private int factorial(int i) {
+        if(i < 2) return 1; 
+        else return 2;
+    }
+
+    //Clean up
+    private int factorial(int i) {
+        if(i < 2) {
+           return 1;
+        } else {
+            return 2;
+        }
+    }
+
+--------------
+Steg 4: 3! = 6
+--------------
+    @Test
+    public void shouldReturnSix() {
+        assertEquals(6, factorial(3));
+    }
+
+  //Kode
+  private int factorial(int i) {
+    if (i < 2) {
+        return 1;
+    }
+
+    if(i == 2) {
+        return 1*i;
+    } else {
+        return 1*2*i;
+    }
+  }
+
+--------------
+Steg 5: 4! = 24
+--------------
+
+    @Test
+    public void shouldReturnTwentyFour() {
+        assertEquals(24, factorial(4));
+    }
+
+    //Kode, prøver oss på en rekrusiv løsning
+    private int factorial(int i) {
+        if (i < 2) {
+            return 1;
+        }
+
+       return factorial(i-1)*n;
+    }
+
+--------------
+Steg 4: 10! = 3628800
+--------------
+    @Test
+    public void shouldFindCorrectFactorialFor10() {
+        assertEquals(3628800, factorial(10));
+    }
+
+Hurray!!

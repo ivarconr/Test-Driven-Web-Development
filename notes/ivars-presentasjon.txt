@@ -1,0 +1,109 @@
+Printable Notes:
+----------------
+> Testing intro
+-----------------
+Hvorfor tester vi (p4)
+- Verifisere krav -> Bygger vi det vi skal?
+- Sikre at løsningen ikke gjør noe annet enn vi hadde tenkt
+- Øke kodekvaliteten?
+- Beskyttelse ved fremtidige endringer
+- Dokumentasjon
+
+Sikre kodekvalitet (p5)
+- Verifisere korrekthet kode -> finne bugs etc
+- Enklere å teste grenseverdier gjennom tester
+- Kan ikke teste kvalitet i seg selv 
+--> tester kan indikere et minimum av kvalitet
+--> utvikleren har jo gidda å skrive testene
+
+Beskytte koden ved fremtidige endringer (p7)
+- Har ikke kontroll på fremtiden
+- Andre utviklere
+- Ting vi ikke har tenkt på
+- Hindre at folk ødelegger koden vi er avhengig av.
+
+Fungerer som dokumentasjon (p8)
+- Hvordan bruke kode
+- APIer
+- Grenseverdier
+- Hvordan "newe" opp en klasse?
+
+God testpraksis (p9)
+- Automatiserte tester
+- Raske tester
+- Små isolerte tester som verifiserer konkrete funksjoner
+- Testene skal kunne kjøres i vilkårlig rekkefølge
+- Testene kjøres ved innsjekk av ny kode
+
+Vi ønsker å unngå feil i produksjon (p10)
+
+Testing i flere nivå (p12)
+- Mange enhetstester
+- Noen funksjonelle tester
+- Få akspetansetester
+
+Enhetstester (p13)
+- tester små isolerte deler av koden
+- typisk bare en klasse er involver, "faker alt annet".
+
+Funksjonelle tester (p14)
+- Fokuserer på å teste en spesifikk funksjon i applikasjonen.
+- Involverer typisk flere klasser
+
+Akseptansetester (p16)
+- Verifiserer kravene til løsninger
+- Typisk av produkteier
+
+
+----------------------
+Test-drevet utvikling
+----------------------
+
+Først: by example
+
+
+TDD: en iterativ prosess (p23)
+Hva gjorde vi?
+
+1. Write a failing test
+2. Write code that corrects the failing test
+3. Clean up your code
+> Go to 1.
+
+TDD: fordeler (p24)
+- Koden får god testdekning
+--> Gir høy tiltro til koden
+--> testbar kode, dokumentert kode
+
+- Gir rask feedback
+--> raskere å fikse feil
+
+- Reduserer unødvendig kode
+--> Vi kan ikke implementere kode som ikke  
+
+- Fokus på mindre deler av systemet om gangen
+
+TDD: ungå waste (p25)
+- Sikkert kjekt å ha en gang?
+
+TDD tvinger utvikler til å fokusere på mindre biter av problemet (p26)
+- Fokus på mindre biter av gangen
+- Må tenke grensesnitt før implementasjon
+- Fake avhengigheter gjennom mocks
+- Definitivt mindre komplekst enn å tenke designet for hele løsningen før 
+implementasjonen
+
+TDD: svakheter (p26)
+- Mer kode, mer vedlikehold
+- TDD ingen garanti for kvalitet
+- krevende
+- Rammeverk legger føringer
+
+
+Hovedpoenget med TDD (p27)
+å kontinuerlig forbedre designet. 
+
+
+
+
+
