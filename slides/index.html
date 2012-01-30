@@ -28,8 +28,7 @@ _.tt[kris-mikael.krister@iteraconsulting.no]_
 
 1. Testing intro
  - Hvorfor tester vi?
- - Ulike test-typer
- - Testing i flere nivå 
+ - Flere nivå av testing
 2. Play framework
  - Introduksjon til rammeverket
  - Praktisk eksempel
@@ -57,63 +56,92 @@ _.tt[kris-mikael.krister@iteraconsulting.no]_
 
 # Hvorfor tester vi?
 
-- **Øke kodekvaliten**
- - Finner feil/bugs tidligere
- - Mindre debugging
-- Sikre at koden *løser problemet* vårt
-- Sikre at koden *ikke* gjør noe annet enn den skal
-- Beskytte koden mot **bieffekter** ved fremtidige endringer
- - Tryggere å refaktorere 
+- **Verifisere at løsningen tilfredsstiller kravene**
+ - Bygger vi det vi skal?
+- **Sikre at løsningen ikke gjør noe annet enn det vi hadde tenkt**
+- **Sikre kodekvalitet**
+- **Beskytte koden ved fremtidige endringer**
 - **Fungerer som dokumentasjon**
- - Hvordan skal koden benyttes?
- - Hvordan instansiere opp et objekt?
- - Hva er grenseverdiene?
 
 
 ---
 
-.center
-# Det tar tid å fikse feil i koden
+# Sikre kodekvalitet
+- Verifisere korrekthet kode
+- Enklere å teste grenseverdier gjennom tester
+- Finne feil/bugs tidligere
+- Spare tid og penger
+- Gode tester kan indikere et *minimum* av kvalitet
+- MEN: vi kan *ikke* teste kvalitet direkte
+
+
+
+---
+
+.center.middle
+### Det er billig å finne feil tidlig
+
 <img src="images/bugs_tid.png" />
 
+---
+
+# Beskytte koden ved fremtidige endringer
+- Gjør det billigere å legge til mer funksjonalitet siden
+- Ofte *bieffekter* ved å innføre ny funksjonalitet
+- Vi har ikke kontroll på fremtiden
+ - Hvilke utviklere som kommer til
+ - Hvilken funskjonalitet som skal endres / legges til
+- Gode tester gjør det tryggere å refaktorere
+ - En mekanisme for å øke kodekvaliteten
+ - Forbedre / endre system-design
+
 
 ---
 
-.center
-# Vi ønsker å unngå feil i produksjon
-<img src="images/parkometer_fail.jpg" style="height: 70%;" />
+# Fungerer som dokumentasjon
+
+- Hvordan skal koden benyttes?
+- Hva har utviklerne tenkt?
+- Hvordan instansierer vi opp et objekt?
+- Hva er grenseverdiene?
+
+<div class="code">
 
 
+     @Test
+     public void shouldRequirePersonToBeOver18ToBuyBeer() {
+       Person p = new Person("ole", 18);
+       assertFalse(p.allowedToBuyBeer());
+     }
 
----
-
-###White-box testing
-<img src="images/white-box.png" />
-
-<br /><br />
-
-
-###Black-box testing
-<img src="images/black-box.png" />
-
+</div>
 
 ---
 
 # God testpraksis
-- Små tester som tester som verifiserer konkrete funksjoner
 - Automatiserte tester
 - Raske tester
+- Små isolerte tester som verifiserer konkrete funksjoner
 - Testene skal kunne kjøres i vilkårlig rekkefølge
 - Testene kjøres ved **innsjekk** av ny kode
- - Typisk av en *continous integration* server
+ - Typisk av en *continous integration server* (CI)
 
-
-
+<br />
 <div class="moody box">
 
 ###Dersom koden er vanskelig å teste er det et tegn på dårlig design...
 
 </div>
+
+---
+
+.center
+# Vi ønsker å unngå feil i <u>produksjon</u>
+<img src="images/parkometer_fail.jpg" style="height: 70%;" />
+
+
+
+
 
 ---
 
@@ -124,8 +152,7 @@ _.tt[kris-mikael.krister@iteraconsulting.no]_
 
 ---
 
-# Enhetstester.red.bold[*]
-.footnote[.red.bold[*] Tilhører kategorien white-box testing]
+# Enhetstester
 
 <div class="box happy">
 ###Validerer at *isolerte enheter* i applikasjonen fungerer slik de skal.
@@ -166,8 +193,7 @@ _.tt[kris-mikael.krister@iteraconsulting.no]_
 
 ---
 
-# Funksjonelle tester.red.bold[*]
-.footnote[.red.bold[*] Form for black-box testing]
+# Funksjonelle tester
 
 <div class="box happy">
 ###Fokuserer på å teste en spesifikk funksjon i applikasjonen. 
@@ -179,21 +205,20 @@ _.tt[kris-mikael.krister@iteraconsulting.no]_
 - Innvolverer typisk flere klasser
 
 ### Eksempler i WEB-app
-- Teste at kontrollerene håndterer forespørsler korrekt.
+- Teste at kontrollerne håndterer forespørsler korrekt.
 - Verifisere at en HTML-form finnes på siden. 
 - Ble brukeren redirigert til riktig side?
 - Er brukeren autentisert korrekt?
 
 ---
 
-# Akseptansetester.red.bold[*]
-.footnote[.red.bold[*] Black-box testing]
+# Akseptansetester
 
 <div class="box happy">
-### Verifiserer at systemet tilfredstiller kravene som er satt til løsningen.
+### Verifiserer at systemet tilfredsstiller kravene som er satt til løsningen.
 </div>
 
-- Tester systemetet fra *brukerens* perspektiv
+- Tester systemet fra *brukerens* perspektiv
 - Høy-nivå tester som verifiserer hele brukerhistorier
 - Sikre at systemet løser *kravene* 
 - Fokuserer *ikke* på hvordan et krav er løst
@@ -350,23 +375,17 @@ Vi skal bruke TDD til å implementere metoden .tt[factorial(int n)] i Java. Denn
 ---
 
 # TDD: fordeler
-- **Koden får god testdeking**
+- **Koden får god testdekning**
  - Gir tiltro til at koden er korrekt
  - Koden blir garantert testbar
  - God dokumentasjon
+ - Gjør det trygt og enkelt å refaktorere kode
  - Beskytter kode ved fremtidige endringer
- - Kan også teste  uten TDD? Ikke disiplinert nok? Mangel på tid.., fredag ettermiddag.., vi har jo *manuelt* testet at koden virker!!!
 - **TDD gir oss hurtig tilbakemelding**
  - Mindre bruk av debugger
  - Gir mulighet til å oppdage feil tidligere
 - **Reduserer mengden av "kjekt å ha kode"**
-- **Tvinger utvikler til å fokusere på mindre biter av problemet**
- - Må fokusere på grensesnitt før kode implementeres
- - Tar små steg i retning av løsningen
- - Modularisert og fleksibel kode som enkelt lar seg utvide. 
- - Mindre komplekst  enn å designe en hel løsning upfront
-- **Gjør det trygt og enkelt å refaktorere kode**
-
+- **Fokus på mindre deler av systemet om gangen**
 
 ---
 
@@ -374,6 +393,13 @@ Vi skal bruke TDD til å implementere metoden .tt[factorial(int n)] i Java. Denn
 # TDD: ungå waste
 <img src="images/balcony.jpg" />
 
+---
+
+#TDD tvinger utvikler til å fokusere på mindre biter av problemet
+ - Må fokusere på grensesnitt før kode implementeres
+ - Tar små steg i retning av løsningen
+ - Oppnår modularisert og fleksibel kode som enkelt lar seg utvide
+ - Mindre komplekst enn å designe en hel løsning upfront
 
 
 ---
@@ -580,7 +606,17 @@ Instanser av modellen - inkludert alle datafelter - skal kunne lagres til databa
       this.priority = priority;
     }
 
+
 ---
+
+# Funksjonelle tester i play
+
+.center
+<img style="zoom: 0.87" src="images/functonal.png" />
+
+
+---
+
 
 # Iterasjon 3
 
