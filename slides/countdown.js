@@ -6,7 +6,7 @@
 
     function Clock() {
       this.appendClockToCurrentSlide = __bind(this.appendClockToCurrentSlide, this);
-      this.updateClock = __bind(this.updateClock, this);      this.limits = [3, 15, 10, 3, 3, 3, 3, 3, 1, 5, 5, 5, 35, 8, 7, 4, 5, 5, 15, 10, 10, 10, 10, 10, 10, 10, 10, 10];
+      this.updateClock = __bind(this.updateClock, this);      this.limits = [3, 3, 0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 4, 3, 7, 35, 0, 2, 2, 2, 2, 2, 2, 2, 0, 5, 5, 10, 9, 5, 3, 9, 4, 9, 6, 4, 9, 4, 9, 4, 9, 4, 4, 9, 2, 4, 9, 4];
       this.startTime = new Date();
     }
 
@@ -22,7 +22,11 @@
           slide = $(slide);
           clock = slide.find('div.clock');
           if (!(clock.length > 0)) clock = _this.appendClockToCurrentSlide();
-          clock.html("" + minutesUsed + "/" + availableTime);
+          if (availableTime) {
+            clock.html("" + minutesUsed + "/" + availableTime);
+          } else {
+            clock.html($("<img>").attr('src', 'images/homer.jpg').css('height', '80px'));
+          }
           _this.updateCss(clock, minutesUsed, availableTime);
         }
         slideLimit = _this.limits[i];

@@ -545,6 +545,18 @@ Vi skal bruke TDD til å implementere metoden .tt[factorial(int n)] i Java. Denn
 
 ---
 
+# Persistering
+
+* Play bruker Hibernate
+* Modeller som extender .tt[Model] og blir annotert med .tt[@Entity] lagres til en in-memory-database
+
+# Fixtures
+
+* Testoppsett
+* Play tilbyr .tt[Fixtures.deleteDatabase()] for å renske opp mellom hver test
+
+---
+
 # Iterasjon 2
 
 <div class="moody box">
@@ -802,6 +814,14 @@ Vi skal viderutvikle create-metoden slik at den redirecter oss til .tt[/todo/ind
 
 ---
 
+# Selenium
+
+* Automatisering av nettlesere
+* Play tar i bruk dette for akseptansetesting og testing av view
+* Selenium bruker "Selenese" som språk, vi bruker et minimalt subsett i dag
+
+---
+
 # Iterasjon 7
 
 <div class="moody box">
@@ -846,6 +866,24 @@ Vi skal viderutvikle create-metoden slik at den redirecter oss til .tt[/todo/ind
     // Implementasjon:
     #{extends 'main.html' /}
     #{set title:'Add Todo' /}
+
+---
+
+
+# DOM-Selectors i selenium
+
+* Hva er DOM?
+* Hva er en selector?
+* Vis!
+
+<div></div>
+<div class="aDiv"></div>
+<div id="myDiv"></div>
+
+    .javascript
+    css=div
+    css=div.aDiv
+    css=div#myDiv
 
 ---
 

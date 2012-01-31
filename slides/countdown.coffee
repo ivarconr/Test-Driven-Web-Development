@@ -1,34 +1,58 @@
 class Clock
   constructor: ->
     @limits = [
-      3, #intro
-      15, #tommyintro
-      10, # agenda
-      3, # testing intro med bilde
-      3, # hvorfor tester vi?
-      3, # unit-testing
-      3, # funksjonell-testing
-      3, # akseptansetester
-      1, # flere nivå
-      5, # play framework fordeler/ulemper
-      5, #play arkitektur
-      5, #demo 
-      35, # Oppsett, minnebrikker osv, med mat
-      8, # tdd  1
-      7, # tdd 2
-      4, # tdwd intro
+      3, # førsteside
+      3, # agenda
+      0, # "tom" side
+      2, # hvorfor tester vi og ivars opplegg
+      2, # hvorfor tester vi og ivars opplegg
+      2, # hvorfor tester vi og ivars opplegg
+      2, # hvorfor tester vi og ivars opplegg
+      2, # hvorfor tester vi og ivars opplegg
+      2, # hvorfor tester vi og ivars opplegg
+      2, # hvorfor tester vi og ivars opplegg
+      2, # hvorfor tester vi og ivars opplegg
+      2, # hvorfor tester vi og ivars opplegg
+      2, # hvorfor tester vi og ivars opplegg
+      2, # hvorfor tester vi og ivars opplegg
+      2, # hvorfor tester vi og ivars opplegg
+      0, # "tom" side
+      4, # play
+      3, # play arkitektur
+      7, # demo og vise play-struktur
+      35,# Oppsett, minnebrikker osv, med mat
+      0, # "tom" side
+      2, # tdd 1
+      2, # tdd 2
+      2, # tdd 3
+      2, # tdd 4
+      2, # tdd 5
+      2, # tdd 6
+      2, # tdd 7
+      0, # "tom" side
+      5, # utfordringer ved webapptesting
       5, # intro til oppgave
-      5, # oppsett
-      15, # iterasjon 1
-      10, # iterasjon 2
-      10, # iterasjon 3
-      10, # iterasjon 4
-      10, # iterasjon 5
-      10, # iterasjon 6
-      10, # iterasjon 7
-      10, # iterasjon 8
-      10, # iterasjon 9
-      10 # iterasjon 10
+      10, # oppsett
+      9, # iterasjon 1
+      5, # iterasjon 1
+      3, # hibernate
+      9, # iterasjon 2
+      4, # iterasjon 2
+      9, # iterasjon 3
+      6, # iterasjon 3
+      4, # iterasjon 3
+      9, # iterasjon 4
+      4, # iterasjon 4
+      9, # iterasjon 5
+      4, # iterasjon 5
+      9, # iterasjon 6
+      4, # iterasjon 6
+      4, # selenium
+      9, # iterasjon 7
+      2, # iterasjon 7
+      4, # dom selectors
+      9, # iterasjon 8
+      4 # iterasjon 8
     ]
     @startTime = new Date()
 
@@ -44,7 +68,10 @@ class Clock
         unless clock.length > 0
           clock = @appendClockToCurrentSlide()
 
-        clock.html("#{minutesUsed}/#{availableTime}")
+        if availableTime
+          clock.html("#{minutesUsed}/#{availableTime}")
+        else
+          clock.html($("<img>").attr('src', 'images/homer.jpg').css('height', '80px'))
         @updateCss(clock, minutesUsed, availableTime)
 
       slideLimit = @limits[i]
