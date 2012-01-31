@@ -18,6 +18,8 @@
       availableTime = 0;
       return $.each(this.slides, function(i, slide) {
         var clock, slideLimit;
+        slideLimit = _this.limits[i];
+        availableTime += slideLimit;
         if (_this.isCurrentSlide(slide)) {
           slide = $(slide);
           clock = slide.find('div.clock');
@@ -25,12 +27,12 @@
           if (availableTime) {
             clock.html("" + minutesUsed + "/" + availableTime);
           } else {
-            clock.html($("<img>").attr('src', 'images/homer.jpg').css('height', '80px'));
+            if (i !== 0) {
+              clock.html($("<img>").attr('src', 'images/homer.jpg').css('height', '80px'));
+            }
           }
-          _this.updateCss(clock, minutesUsed, availableTime);
+          return _this.updateCss(clock, minutesUsed, availableTime);
         }
-        slideLimit = _this.limits[i];
-        return availableTime += slideLimit;
       });
     };
 

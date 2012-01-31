@@ -62,6 +62,8 @@ class Clock
     availableTime = 0
     
     $.each(@slides, (i, slide) =>
+      slideLimit = @limits[i]
+      availableTime += slideLimit
       if @isCurrentSlide(slide)
         slide = $(slide)
         clock = slide.find('div.clock')
@@ -71,11 +73,10 @@ class Clock
         if availableTime
           clock.html("#{minutesUsed}/#{availableTime}")
         else
-          clock.html($("<img>").attr('src', 'images/homer.jpg').css('height', '80px'))
+          if i isnt 0
+            clock.html($("<img>").attr('src', 'images/homer.jpg').css('height', '80px'))
         @updateCss(clock, minutesUsed, availableTime)
 
-      slideLimit = @limits[i]
-      availableTime += slideLimit
     )
 
   updateCss: (clock, used, avail) ->
