@@ -819,6 +819,14 @@ Vi skal viderutvikle create-metoden slik at den redirecter oss til .tt[/todo/ind
 * Automatisering av nettlesere
 * Play tar i bruk dette for akseptansetesting og testing av view
 * Selenium bruker "Selenese" som språk, vi bruker et minimalt subsett i dag
+* Bruk enkelt-quote (') og ikke vanlig quote (")
+
+<div></div>
+
+    .html
+    open('/en_url')
+    assertTitle('tittel')
+    assertElementPresent('css=cssSelector')
 
 ---
 
@@ -856,7 +864,6 @@ Vi skal viderutvikle create-metoden slik at den redirecter oss til .tt[/todo/ind
       // Open page, and check that no error occured
       open('/todo/add')
       assertTitle('Add Todo')
-      assertNotTitle('Application error')
     #{/selenium}
 
 
@@ -912,7 +919,8 @@ Vi skal viderutvikle create-metoden slik at den redirecter oss til .tt[/todo/ind
 Et form-element som over kan hentes med følende css-selectors:
 
     .html
-    "form",  "form.aForm",  "#myForm",  "form#myForm",  "form[method=POST]"
+    'css=form',  'css=form.aForm',  'css=#myForm',  'css=form#myForm', 
+    'css=form[method=POST]'
 
 
 
