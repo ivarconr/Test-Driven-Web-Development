@@ -647,6 +647,7 @@ Vi skal implementere en Todo-kontroller som tilbyr GET på følgende URL: .tt[/t
 .label[Tips]
 
 - Opprett unit-test .tt[test/controller/TodoFunctionalTest.java] som gjør en GET-forespørsel på .tt[/todo/add] og verifiserer at responsen er 200 ok. 
+- Husk at testen skal arve fra .tt[FunctionalTest]. Da vil du få en "GET" methode tilgjengelig som gjør det enkelt å simulere "GET" forespørsler. 
 - Sjekk at testen feiler.
 - Fiks feilende test ved å opprette en *Todo kontroller* som har en "add" action. 
 </div>
