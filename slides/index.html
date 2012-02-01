@@ -206,7 +206,7 @@ _.tt[kris-mikael.krister@iteraconsulting.no]_
 - Verifiserer at grensesnitt følger kontrakten. 
 - Kan fortelle oss at "noe i koden" brakk
 - Tester koden på tilsvarende måte som den blir konsumert. 
-- Innvolverer typisk flere klasser
+- Involverer typisk flere klasser
 
 ### Eksempler i WEB-app
 - Teste at kontrollerne håndterer forespørsler korrekt.
@@ -567,7 +567,7 @@ Instanser av modellen - inkludert alle datafelter - skal kunne lagres til databa
 .label[Tips]
 
 - Opprett unit-test .tt[test/models/TodoTest.java] som lager en .tt[Todo], kaller .tt[save()] på instansen og ser om den har blitt lagret i databasen.
-- Fiks feilende test ved å extende modellen med "Model", og annoter klassen med .tt[@Entity]
+- Fiks feilende test ved å extende modellen med "Model", og annoter klassen med .tt[@Entity] (.tt[javax.persistence.Entity])
 - Husk at tester skal kjøres i isolasjon, bruk JUnits .tt[@Before] og .tt[Fixtures.deleteDatabase()]
 
 </div>
