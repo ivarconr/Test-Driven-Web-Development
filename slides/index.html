@@ -114,7 +114,7 @@ _.tt[kris-mikael.krister@iteraconsulting.no]_
 
      @Test
      public void shouldRequirePersonToBeOver18ToBuyBeer() {
-       Person p = new Person("ole", 18);
+       Person p = new Person("ole", 17);
        assertFalse(p.allowedToBuyBeer());
      }
 
@@ -189,7 +189,7 @@ _.tt[kris-mikael.krister@iteraconsulting.no]_
 
       @Test
       public void shouldSumCorrectly() {
-        assertEquals(2, 1+2);
+        assertEquals(2, 1+1);
       }
     }
 </div>
@@ -566,7 +566,7 @@ Instanser av modellen - inkludert alle datafelter - skal kunne lagres til databa
 <div class="moody box">
 .label[Tips]
 
-- Opprett unit-test .tt[test/models/TodoTest.java] som lager en .tt[Todo], kaller .tt[save()] på instansen og ser om den har blitt lagret i databasen.
+- Legg til en ny test i .tt[test/models/TodoTest.java] som lager en .tt[Todo], kaller .tt[save()] på instansen og ser om den har blitt lagret i databasen.
 - Fiks feilende test ved å extende modellen med "Model", og annoter klassen med .tt[@Entity] (.tt[javax.persistence.Entity])
 - Husk at tester skal kjøres i isolasjon, bruk JUnits .tt[@Before] og .tt[Fixtures.deleteDatabase()]
 
@@ -639,7 +639,7 @@ Instanser av modellen - inkludert alle datafelter - skal kunne lagres til databa
 <div class="moody box">
 .label[Hva skal implementeres?]
 
-Vi skal implementere kontrolleren som tilbyr GET på følgende URL: .tt[/todo/add]. 
+Vi skal implementere en Todo-kontroller som tilbyr GET på følgende URL: .tt[/todo/add]. 
 </div>
 
 <div class="moody box">
